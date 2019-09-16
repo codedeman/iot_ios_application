@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "smart_city/Services/AuthService.swift"
-            timestampString = "590295022.97466"
+            timestampString = "590322039.139778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "findUserByEmail(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "smart_city/Services/AuthService.swift"
-            timestampString = "590295022.975814"
+            timestampString = "590322039.141909"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "findUserByEmail(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "smart_city/Services/AuthService.swift"
+            timestampString = "590322039.143267"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "findUserByEmail(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "smart_city/Services/AuthService.swift"
+            timestampString = "590322039.147842"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "findUserByEmail(completion:)"
             landmarkType = "7">
          </BreakpointContent>

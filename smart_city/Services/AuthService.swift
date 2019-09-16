@@ -89,40 +89,42 @@ class  AuthService {
     
     
     func findUserByEmail(completion: @escaping CompletionHandler) {
-        
+
         
         let url = URL_USER_BY_EMAIL+"?token=\(authToken)"
-        print("here:\(url)")
         Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: BEARER_HEADER).responseJSON { (response) in
-            
+
             if response.result.error == nil {
                 guard let data = response.data else { return }
                 
+                let json =  try!  JSON(data: data)
                 
                 
+               if  let item  =  json["data"].arrayObject{
                 
-                do{
-                    
-                    let json =  try!  JSON(data: data)
-                    let place = json["data"].stringValue
-                    
-                    print("place \(place)")
-                    //                    print(self.authToken)
-                    completion(true)
-                    
-                }catch{
-                    
-                    print("error right here")
+                
+                    for itemset in item{
+                        
+                        let dataset =  itemset as! [String:AnyObject]
+                        print("data set \(dataset["place_name"])")
+
+                        
+                        
+                    }
+                
+
+                
                 }
                 
-//                for itemset in data{
-//
-//
-//                    print("itemset \(itemset)")
-//
-//                }
                 
-//                print("data: \(data)")
+                
+                
+                    
+                    
+                    
+                    
+            
+
                 
             } else {
                 completion(false)
