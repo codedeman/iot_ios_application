@@ -1,0 +1,6 @@
+module Pods_smart_city {
+  umbrella header "Pods-smart_city-umbrella.h"
+
+  export *
+  module * { export * }
+}
