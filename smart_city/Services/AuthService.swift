@@ -57,9 +57,9 @@ class  AuthService {
             "username": lowerCaseEmail,
             "password": password
         ]
-        var url = URL_LOGIN+"?username=\(email)&password=\(password)"
+//        var url = URL_LOGIN+"?username=\(email)&password=\(password)"
         
-        Alamofire.request(url, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADER).responseJSON { (response) in
+        Alamofire.request(URL_LOGIN, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADER).responseJSON { (response) in
             
             print(response)
             

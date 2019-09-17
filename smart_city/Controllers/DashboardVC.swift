@@ -7,77 +7,87 @@
 //
 
 import UIKit
-import QuartzCore
+import Charts
 
 
-class DashboardVC: UIViewController,LineChartDelegate {
+class DashboardVC: UIViewController {
     
-    var lineChart: LineChart!
-
-    var label = UILabel()
-
-
+   
+    let data:[Int]  = [43, 53]
+    let data2: [Double] = [1, 3, 5, 13, 17, 20]
+    
+    @IBOutlet weak var forecastTable: UITableView!
+    @IBOutlet weak var inforView: RoundedView!
+    // simple line with custom x axis labels
+    let xLabels: [String] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+    @IBOutlet weak var lineChart: LineChartView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        forecastTable.isHidden = true
         
+//        forecastTable.register(UINib(nibName: "ForeCastCell", bundle: nil), forCellReuseIdentifier: "ForeCastCell")
         
-        var views: [String: AnyObject] = [:]
-        
-        label.text = "..."
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = NSTextAlignment.center
-        self.view.addSubview(label)
-        views["label"] = label
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[label]-|", options: [], metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-80-[label]", options: [], metrics: nil, views: views))
-        
+//        productCollectionView.register(UINib(nibName: Identifiers.ProductCell, bundle: nil), forCellWithReuseIdentifier:Identifiers.ProductCell)
 
-        // simple arrays
-        let data: [CGFloat] = [3, 4, -2, 11, 13, 15]
-        let data2: [CGFloat] = [1, 3, 5, 13, 17, 20]
+        setLineChart(name: xLabels, values: data2)
+        forecastTable.register(UINib(nibName: "ForeCastCell", bundle: nil), forCellReuseIdentifier: "ForeCastCell")
+
         
-        // simple line with custom x axis labels
-        
-        
-        // simple line with custom x axis labels
-        let xLabels: [String] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
-        
-        lineChart = LineChart()
-        lineChart.animation.enabled = true
-        lineChart.area = true
-        lineChart.x.labels.visible = true
-        lineChart.x.grid.count = 5
-        lineChart.y.grid.count = 5
-        lineChart.x.labels.values = xLabels
-        lineChart.y.labels.visible = true
-        lineChart.addLine(data)
-        lineChart.addLine(data2)
-        
-        lineChart.translatesAutoresizingMaskIntoConstraints = false
-        lineChart.delegate = self
-        self.view.addSubview(lineChart)
-        views["chart"] = lineChart
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[chart]-|", options: [], metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[label]-[chart(==200)]", options: [], metrics: nil, views: views))
 
         // Do any additional setup after loading the view.
     }
     
-    func didSelectDataPoint(_ x: CGFloat, yValues: [CGFloat]) {
-        print("\(x) and \(yValues)")
-
+    func setLineChart(name:[String],values:[Double])  {
+        
+        var lineArray:[ChartDataEntry] = []
+        
+        for row in 0..<name.count{
+            
+            let data:ChartDataEntry = ChartDataEntry(x: Double(row), y: values[row])
+            lineArray.append(data)
+        }
+        let lineDataSet:LineChartDataSet = LineChartDataSet(entries: lineArray, label: "Air Quality")
+        
+        let linedata:LineChartData = LineChartData(dataSet: lineDataSet )
+        
+        lineChart.data = linedata
+        lineChart.animate(xAxisDuration: 2, easingOption: .easeInSine)
         
     }
     
-    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-        if let chart = lineChart {
-            chart.setNeedsDisplay()
-        }
+    
+    @IBAction func seeallBtnWasPressed(_ sender: Any) {
+          forecastTable.isHidden = false
+        
         
     }
+    
+   
     
 
   
+
+}
+
+extension DashboardVC:UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return xLabels.count
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ForeCastCell", for: indexPath) as? ForeCastCell else {
+            return ForeCastCell()
+        }
+        cell.value.text = xLabels[indexPath.row]
+        
+        
+        return cell
+    }
+    
 
 }
