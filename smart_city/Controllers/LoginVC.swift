@@ -47,6 +47,9 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.spinner.stopAnimating()
+//        self.spinner.isHidden = true
+
 
         // Do any additional setup after loading the view.
     }

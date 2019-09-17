@@ -143,7 +143,7 @@ open class LineChart: UIView {
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.clear
+        self.backgroundColor = #colorLiteral(red: 0.2470588235, green: 0.2745098039, blue: 0.2901960784, alpha: 1)
     }
     
     convenience init() {

@@ -106,7 +106,22 @@ class  AuthService {
                     for itemset in item{
                         
                         let dataset =  itemset as! [String:AnyObject]
-                        print("data set \(dataset["place_name"])")
+                        
+//                        let  times  = dataset["times"]
+//                        
+//                        for getdata in times{
+//                        
+//                        
+//                        
+//                        }
+                        
+//                        print("time\(String(describing: times["datas"]))")
+                        
+                        
+                        
+//                        print("time\(times)")
+
+                        
 
                         
                         
@@ -119,10 +134,10 @@ class  AuthService {
                 
                 
                 
-                    
-                    
-                    
-                    
+                
+                
+                
+                
             
 
                 
