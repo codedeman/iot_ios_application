@@ -61,7 +61,6 @@ class  AuthService {
         
         Alamofire.request(URL_LOGIN, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADER).responseJSON { (response) in
             
-            print(response)
             
             if response.result.error == nil {
                 guard let data = response.data else { return }
@@ -89,10 +88,18 @@ class  AuthService {
     
     
     func findUserByEmail(completion: @escaping CompletionHandler) {
-
+        
+        let body: [String: Any] = [
+            "token":authToken
+        ]
+        
+        print("token\(authToken)")
         
         let url = URL_USER_BY_EMAIL+"?token=\(authToken)"
-        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: BEARER_HEADER).responseJSON { (response) in
+        
+        print("\(url)")
+        
+        Alamofire.request(URL_USER_BY_EMAIL, method: .get, parameters: body, encoding: JSONEncoding.default, headers: BEARER_HEADER).responseJSON { (response) in
 
             if response.result.error == nil {
                 guard let data = response.data else { return }
@@ -107,19 +114,13 @@ class  AuthService {
                         
                         let dataset =  itemset as! [String:AnyObject]
                         
-//                        let  times  = dataset["times"]
-//                        
-//                        for getdata in times{
-//                        
-//                        
-//                        
-//                        }
-                        
-//                        print("time\(String(describing: times["datas"]))")
+                        for i in dataset{
                         
                         
+                            print("data set \(i)")
                         
-//                        print("time\(times)")
+                        }
+                        
 
                         
 

@@ -10,7 +10,6 @@ import Foundation
 
 typealias CompletionHandler = (_ Success: Bool) -> ()
 let BASE_URL = "http://45.77.102.151:5000/v1.1"
-let URL_REGISTER = "\(BASE_URL)account/register"
 
 let URL_LOGIN = "\(BASE_URL)/login"
 let URL_USER_BY_EMAIL = "\(BASE_URL)/data/get"

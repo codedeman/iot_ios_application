@@ -16,8 +16,16 @@ class DashboardVC: UIViewController {
     let data:[Int]  = [43, 53]
     let data2: [Double] = [1, 3, 5, 13, 17, 20]
     
+    var forcastVC:ForeCastVC!
+    var visualEffectView:UIVisualEffect!
+    
+    let carHeight:CGFloat  = 600
+    let cardHandelAreaHeight:CGFloat = 65
+    
+    
     @IBOutlet weak var forecastTable: UITableView!
     @IBOutlet weak var inforView: RoundedView!
+    
     // simple line with custom x axis labels
     let xLabels: [String] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
     @IBOutlet weak var lineChart: LineChartView!

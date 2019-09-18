@@ -29,8 +29,7 @@ class LoginVC: UIViewController {
             if sucess{
                 
                 AuthService.instance.findUserByEmail(completion: { (sucess) in
-                    
-                    
+                
                     print("Sucess \(sucess)")
                     self.spinner.isHidden = true
                     self.spinner.stopAnimating()
