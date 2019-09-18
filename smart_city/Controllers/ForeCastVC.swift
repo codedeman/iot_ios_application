@@ -9,7 +9,11 @@
 import UIKit
 
 class ForeCastVC: UIViewController {
-
+//    handleArea
+    
+    
+    @IBOutlet weak var handleArea: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
