@@ -31,10 +31,10 @@ class LoginVC: UIViewController {
                 AuthService.instance.findUserByEmail(completion: { (sucess) in
                 
                     print("Sucess \(sucess)")
-                    self.spinner.isHidden = true
-                    self.spinner.stopAnimating()
-                    self.dismiss(animated: true, completion: nil)
-                    
+//                    self.spinner.isHidden = true
+//                    self.spinner.stopAnimating()
+//                    self.dismiss(animated: true, completion: nil)
+//                    
                     
                 })
 //                print("logged in user!",AuthService.instance.authToken)
@@ -50,7 +50,6 @@ class LoginVC: UIViewController {
 //        self.spinner.isHidden = true
 
 
-        // Do any additional setup after loading the view.
     }
     
     

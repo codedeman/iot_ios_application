@@ -93,13 +93,15 @@ class  AuthService {
             "token":authToken
         ]
         
-        print("token\(authToken)")
+        print("hello \(body)")
         
-        let url = URL_USER_BY_EMAIL+"?token=\(authToken)"
+//        print("token here \(authToken)")
+        Alamofire.request(URL_USER_BY_EMAIL, method: .post, parameters: body,encoding: JSONEncoding.default,headers: nil).responseJSON { (response) in
+            
         
-        print("\(url)")
         
-        Alamofire.request(URL_USER_BY_EMAIL, method: .get, parameters: body, encoding: JSONEncoding.default, headers: BEARER_HEADER).responseJSON { (response) in
+            
+
 
             if response.result.error == nil {
                 guard let data = response.data else { return }
@@ -120,26 +122,13 @@ class  AuthService {
                             print("data set \(i)")
                         
                         }
-                        
-
-                        
-
-                        
+                
                         
                     }
                 
 
                 
                 }
-                
-                
-                
-                
-                
-                
-                
-                
-            
 
                 
             } else {

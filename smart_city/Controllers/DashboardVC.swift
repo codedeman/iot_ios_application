@@ -23,7 +23,7 @@ class DashboardVC: UIViewController {
     var forcastVC:ForeCastVC!
     var visualEffectView:UIVisualEffectView!
     
-    let carHeight:CGFloat  = 600
+    let carHeight:CGFloat  = 400
     let cardHandelAreaHeight:CGFloat = 65
     
     var cardVisible =  false
@@ -133,7 +133,7 @@ class DashboardVC: UIViewController {
             let cornerRadiusAnimator = UIViewPropertyAnimator(duration: duration, curve: .linear) {
                 switch state {
                 case .expanded:
-                    self.forcastVC.view.layer.cornerRadius = 12
+                    self.forcastVC.view.layer.cornerRadius = 20
                 case .collapsed:
                     self.forcastVC.view.layer.cornerRadius = 0
                 }
@@ -172,10 +172,10 @@ class DashboardVC: UIViewController {
         switch recognizer.state {
         case .began:
             
-            startInteractiveTransition(state: nextState, duration: 0.9)
+            startInteractiveTransition(state: nextState, duration: 0.5)
 
             
-        case .changed:
+        case .changed: break
             
             let translation = recognizer.translation(in: self.forcastVC.handleArea)
 

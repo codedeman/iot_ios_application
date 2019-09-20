@@ -105,11 +105,11 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="OzX-uH-uFV">
                                 <rect key="frame" x="69.5" y="304" width="275" height="118"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="hihihaha" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ppa-Ja-3O8">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="thainguyen" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sJg-Qd-zSm">
                                         <rect key="frame" x="0.0" y="0.0" width="275" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="275" id="txL-eY-ckf"/>
-                                            <constraint firstAttribute="height" constant="40" id="wbs-pB-UBl"/>
+                                            <constraint firstAttribute="width" constant="275" id="Qf2-5x-U78"/>
+                                            <constraint firstAttribute="height" constant="40" id="Qqx-0I-DVa"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -123,11 +123,11 @@
                                             <constraint firstAttribute="height" constant="1" id="ynu-pR-sgs"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="thainguyen" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sJg-Qd-zSm">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="hihihaha" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ppa-Ja-3O8">
                                         <rect key="frame" x="0.0" y="65" width="275" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="SP3-gC-x7T"/>
-                                            <constraint firstAttribute="width" constant="275" id="nqk-CO-Xre"/>
+                                            <constraint firstAttribute="width" constant="275" id="txL-eY-ckf"/>
+                                            <constraint firstAttribute="height" constant="40" id="wbs-pB-UBl"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
