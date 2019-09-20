@@ -97,20 +97,13 @@ class  AuthService {
         
 //        print("token here \(authToken)")
         Alamofire.request(URL_USER_BY_EMAIL, method: .post, parameters: body,encoding: JSONEncoding.default,headers: nil).responseJSON { (response) in
-            
-        
-        
-            
-
-
+         
             if response.result.error == nil {
                 guard let data = response.data else { return }
                 
                 let json =  try!  JSON(data: data)
                 
-                
                if  let item  =  json["data"].arrayObject{
-                
                 
                     for itemset in item{
                         

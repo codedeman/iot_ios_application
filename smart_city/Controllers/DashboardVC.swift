@@ -23,8 +23,8 @@ class DashboardVC: UIViewController {
     var forcastVC:ForeCastVC!
     var visualEffectView:UIVisualEffectView!
     
-    let carHeight:CGFloat  = 400
-    let cardHandelAreaHeight:CGFloat = 65
+    let carHeight:CGFloat  = 800
+    let cardHandelAreaHeight:CGFloat = 400
     
     var cardVisible =  false
     var nextState:CardState{
@@ -50,9 +50,9 @@ class DashboardVC: UIViewController {
         
         setLineChart(name: xLabels, values: data2)
 
-        
+        self.forcastVC.view.layer.cornerRadius = 20
 
-        // Do any additional setup after loading the view.
+
     }
     
     func setLineChart(name:[String],values:[Double])  {
@@ -74,11 +74,6 @@ class DashboardVC: UIViewController {
     }
     
     
-//    @IBAction func seeallBtnWasPressed(_ sender: Any) {
-////          forecastTable.isHidden = false
-//        
-//        
-//    }
     
     func setupCard()  {
         
@@ -96,11 +91,11 @@ class DashboardVC: UIViewController {
         forcastVC.view.clipsToBounds = true
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DashboardVC.handleCardTap(recognzier:)))
-        
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DashboardVC.handleCardPan(recognizer:)))
-        
 
-        
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DashboardVC.handleCardPan(recognizer:)))
+
+
+
         forcastVC.handleArea.addGestureRecognizer(tapGestureRecognizer)
         forcastVC.handleArea.addGestureRecognizer(panGestureRecognizer)
 
@@ -130,29 +125,29 @@ class DashboardVC: UIViewController {
             runningAnimations.append(frameAnimator)
             
             
-            let cornerRadiusAnimator = UIViewPropertyAnimator(duration: duration, curve: .linear) {
-                switch state {
-                case .expanded:
-                    self.forcastVC.view.layer.cornerRadius = 20
-                case .collapsed:
-                    self.forcastVC.view.layer.cornerRadius = 0
-                }
-            }
+//            let cornerRadiusAnimator = UIViewPropertyAnimator(duration: duration, curve: .linear) {
+//                switch state {
+//                case .expanded:
+//                    self.forcastVC.view.layer.cornerRadius = 20
+//                case .collapsed:
+//                    self.forcastVC.view.layer.cornerRadius = 0
+//                }
+//            }
             
-            cornerRadiusAnimator.startAnimation()
-            runningAnimations.append(cornerRadiusAnimator)
+//            cornerRadiusAnimator.startAnimation()
+//            runningAnimations.append(cornerRadiusAnimator)
             
-            let blurAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
-                switch state {
-                case .expanded:
-                    self.visualEffectView.effect = UIBlurEffect(style: .dark)
-                case .collapsed:
-                    self.visualEffectView.effect = nil
-                }
-            }
-            
-            blurAnimator.startAnimation()
-            runningAnimations.append(blurAnimator)
+//            let blurAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
+//                switch state {
+//                case .expanded:
+//                    self.visualEffectView.effect = UIBlurEffect(style: .dark)
+//                case .collapsed:
+//                    self.visualEffectView.effect = nil
+//                }
+//            }
+//
+//            blurAnimator.startAnimation()
+//            runningAnimations.append(blurAnimator)
             
         }
     }

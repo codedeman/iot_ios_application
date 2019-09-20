@@ -135,6 +135,10 @@
                         </button>
                     </subviews>
                 </stackView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E1r-k9-EO4">
+                    <rect key="frame" x="10" y="404" width="355" height="263"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="0.23529411759999999" green="0.27450980390000002" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
@@ -142,7 +146,10 @@
                 <constraint firstItem="vGP-O5-lJg" firstAttribute="top" secondItem="gto-Ss-xcA" secondAttribute="bottom" constant="9" id="2N5-cu-9k3"/>
                 <constraint firstItem="rtm-RW-uAu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="4AC-cG-gdA"/>
                 <constraint firstItem="RmA-M9-iTB" firstAttribute="leading" secondItem="2ld-M6-9HX" secondAttribute="trailing" constant="5" id="51D-2f-yQ2"/>
+                <constraint firstItem="E1r-k9-EO4" firstAttribute="top" secondItem="fEV-rU-7o6" secondAttribute="bottom" constant="5" id="AOh-Y0-xiU"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rtm-RW-uAu" secondAttribute="trailing" constant="20" id="B7x-6k-Wl3"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="E1r-k9-EO4" secondAttribute="trailing" constant="10" id="EEZ-G9-mb9"/>
+                <constraint firstItem="E1r-k9-EO4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="G5x-yz-7WM"/>
                 <constraint firstItem="SM7-I1-Pnv" firstAttribute="leading" secondItem="gto-Ss-xcA" secondAttribute="trailing" constant="5" id="Ooq-lr-YDR"/>
                 <constraint firstItem="1uM-M1-U8b" firstAttribute="top" secondItem="SM7-I1-Pnv" secondAttribute="bottom" constant="26" id="PYp-30-dqq"/>
                 <constraint firstItem="iV0-56-wTP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="QC6-aQ-Jgs"/>
@@ -159,6 +166,7 @@
                 <constraint firstItem="fEV-rU-7o6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="swj-H8-vYF"/>
                 <constraint firstItem="2ld-M6-9HX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="tRJ-ab-QPV"/>
                 <constraint firstItem="gto-Ss-xcA" firstAttribute="top" secondItem="2ld-M6-9HX" secondAttribute="bottom" constant="20" id="tTY-Qk-89S"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="E1r-k9-EO4" secondAttribute="bottom" id="ugQ-jh-1ha"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="261.60000000000002" y="392.65367316341832"/>
