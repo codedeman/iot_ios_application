@@ -96,29 +96,46 @@ class  AuthService {
         print("hello \(body)")
         
 //        print("token here \(authToken)")
-        Alamofire.request(URL_USER_BY_EMAIL, method: .post, parameters: body,encoding: JSONEncoding.default,headers: nil).responseJSON { (response) in
+        Alamofire.request(URL_USER_BY_EMAIL, method: .post, parameters: body,encoding: JSONEncoding.default,headers: HEADER).responseJSON { (response) in
+            
+            var arr1 = [String]()
          
             if response.result.error == nil {
                 guard let data = response.data else { return }
                 
                 let json =  try!  JSON(data: data)
                 
-               if  let item  =  json["data"].arrayObject{
+               if  let item  =  json["places"].arrayObject{
                 
                     for itemset in item{
                         
-                        let dataset =  itemset as! [String:AnyObject]
+                        let dataset:Dictionary<String,AnyObject> =  itemset as! Dictionary<String, AnyObject>
                         
-                        for i in dataset{
-                        
-                        
-                            print("data set \(i)")
+                        if let environtment =  dataset["times"]{
+                            
+                            
+                            let environmentvalue = environtment as! Array<AnyObject>
+                            
+                            
+                            for castvalue in environmentvalue{
+                            
+                            
+                                let evvalue:Dictionary<String,AnyObject> = castvalue as! Dictionary<String,AnyObject>
+                                
+                                let arr:Dictionary<String,AnyObject> = evvalue["datas"] as! Dictionary<String, AnyObject>
+                                
+//                                print("data \(arr["temp"])")
+                                
+                                arr1.append(arr["temp"] as! String)
+                            
+                                
+                            }
                         
                         }
-                
-                        
+
                     }
-                
+                    print("data \(arr1.count)")
+
 
                 
                 }

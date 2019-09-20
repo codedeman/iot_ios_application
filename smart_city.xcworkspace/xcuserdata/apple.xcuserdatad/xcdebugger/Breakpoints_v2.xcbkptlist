@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "smart_city/Services/AuthService.swift"
-            timestampString = "590644736.474932"
+            timestampString = "590684199.771698"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "99"
@@ -26,7 +26,7 @@
                   moduleName = "smart_city"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Downloads/iot_ios_application-master/smart_city/Services/AuthService.swift"
-                  timestampString = "590637255.598819"
+                  timestampString = "590684200.037883"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "99"
@@ -41,12 +41,12 @@
                   moduleName = "smart_city"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Downloads/iot_ios_application-master/smart_city/Services/AuthService.swift"
-                  timestampString = "590637255.600834"
+                  timestampString = "590684200.041307"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "106"
-                  endingLineNumber = "106"
-                  offsetFromSymbolStart = "250">
+                  startingLineNumber = "101"
+                  endingLineNumber = "101"
+                  offsetFromSymbolStart = "338">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "smart_city/Services/AuthService.swift"
-            timestampString = "590644736.475614"
+            timestampString = "590684199.773888"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "findUserByEmail(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,13 +74,77 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "smart_city/Services/AuthService.swift"
-            timestampString = "590644736.476361"
+            timestampString = "590684199.774967"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "findUserByEmail(completion:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "smart_city/Controllers/LoginVC.swift"
+            timestampString = "590684199.775998"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "loginWasPressed(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "smart_city/Services/AuthService.swift"
+            timestampString = "590684199.776162"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "findUserByEmail(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "smart_city.AuthService.findUserByEmail(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "smart_city"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Downloads/iot_ios_application-master/smart_city/Services/AuthService.swift"
+                  timestampString = "590684200.081187"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "768">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in smart_city.AuthService.findUserByEmail(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "smart_city"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Downloads/iot_ios_application-master/smart_city/Services/AuthService.swift"
+                  timestampString = "590684200.0853879"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "101"
+                  endingLineNumber = "101"
+                  offsetFromSymbolStart = "338">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
