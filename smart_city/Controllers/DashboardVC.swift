@@ -41,7 +41,8 @@ class DashboardVC: UIViewController {
     @IBOutlet weak var inforView: RoundedView!
     
     // simple line with custom x axis labels
-    let xLabels: [String] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+    let xLabels: [String] = ["70", "69", "90", "20", "30", "40"]
+    let nameLabels:[String] = ["Temperature", "UV", "Rain", "Dust", "Humidity", "Co2"]
     @IBOutlet weak var lineChart: LineChartView!
     
     override func viewDidLoad() {
@@ -125,29 +126,6 @@ class DashboardVC: UIViewController {
             runningAnimations.append(frameAnimator)
             
             
-//            let cornerRadiusAnimator = UIViewPropertyAnimator(duration: duration, curve: .linear) {
-//                switch state {
-//                case .expanded:
-//                    self.forcastVC.view.layer.cornerRadius = 20
-//                case .collapsed:
-//                    self.forcastVC.view.layer.cornerRadius = 0
-//                }
-//            }
-            
-//            cornerRadiusAnimator.startAnimation()
-//            runningAnimations.append(cornerRadiusAnimator)
-            
-//            let blurAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
-//                switch state {
-//                case .expanded:
-//                    self.visualEffectView.effect = UIBlurEffect(style: .dark)
-//                case .collapsed:
-//                    self.visualEffectView.effect = nil
-//                }
-//            }
-//
-//            blurAnimator.startAnimation()
-//            runningAnimations.append(blurAnimator)
             
         }
     }

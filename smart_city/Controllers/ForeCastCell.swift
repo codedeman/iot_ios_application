@@ -12,6 +12,9 @@ class ForeCastCell: UITableViewCell {
 
     
     @IBOutlet weak var value: UILabel!
+    
+    @IBOutlet weak var environmentPrameter: UILabel!
+    @IBOutlet weak var background: RoundedView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

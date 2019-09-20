@@ -11,24 +11,43 @@ import UIKit
 class ForeCastVC: UIViewController {
 //    handleArea
     
-    
+    let xLabels: [String] = ["40", "30", "54", "69", "40", "70"]
+    let nameLabels: [String] = ["Temperature", "UV", "Fire", "Gas", "Rain", "Dust","Humidity","Co2"]
+
     @IBOutlet weak var handleArea: UIView!
     
+    @IBOutlet weak var forecastTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        forecastTableView.register(UINib(nibName: "ForeCastCell", bundle: nil), forCellReuseIdentifier: "ForeCastCell")
 
-        // Do any additional setup after loading the view.
+        forecastTableView.delegate =  self
+        forecastTableView.dataSource = self
+
     }
 
 
-    /*
-    // MARK: - Navigation
+    
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+}
+extension ForeCastVC:UITableViewDataSource,UITableViewDelegate{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return xLabels.count
     }
-    */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ForeCastCell", for: indexPath) as? ForeCastCell else {
+            return ForeCastCell()
+        }
+        cell.value.text = xLabels[indexPath.row]
+        cell.environmentPrameter.text = nameLabels[indexPath.row]
+        
+        
+        return cell
+        
+    }
+    
 
 }

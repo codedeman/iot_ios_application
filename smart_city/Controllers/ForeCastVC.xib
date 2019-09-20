@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ForeCastVC" customModule="smart_city" customModuleProvider="target">
             <connections>
+                <outlet property="forecastTableView" destination="E1r-k9-EO4" id="Vyb-Jm-ara"/>
                 <outlet property="handleArea" destination="iV0-56-wTP" id="1I7-sS-ZaY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -137,10 +138,11 @@
                 </stackView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E1r-k9-EO4">
                     <rect key="frame" x="10" y="404" width="355" height="263"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" red="0.2470588235" green="0.28235294119999998" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="sectionIndexBackgroundColor" red="0.2470588235" green="0.28235294119999998" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" red="0.23529411759999999" green="0.27450980390000002" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color key="backgroundColor" red="0.24705882352941178" green="0.28235294117647058" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
                 <constraint firstItem="RmA-M9-iTB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="120" id="0py-Tq-V79"/>
                 <constraint firstItem="vGP-O5-lJg" firstAttribute="top" secondItem="gto-Ss-xcA" secondAttribute="bottom" constant="9" id="2N5-cu-9k3"/>
