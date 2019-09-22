@@ -14,8 +14,14 @@ let BASE_URL = "http://45.77.102.151:5000/v1.1"
 let URL_LOGIN = "\(BASE_URL)/login"
 let URL_USER_BY_EMAIL = "\(BASE_URL)/data/get"
 
+let URL_GET_CURRENT = "\(BASE_URL)/data/get/current"
 
 
+
+// Notification Constants
+let NOTIF_USER_DATA_DID_CHANGE = Notification.Name("notifUserDataChanged")
+let NOTIF_CHANNELS_LOADED = Notification.Name("channelsLoaded")
+let NOTIF_CHANNEL_SELECTED = Notification.Name("chanenlSelected")
 
 let TO_LOGIN = "toLogin"
 let TO_CREATE_ACCOUNT = "toCreateAccount"
@@ -35,10 +41,10 @@ let HEADER = [
     "Content-Type": "application/json; charset=utf-8"
 ]
 
-let BEARER_HEADER = [
-    "Authorization":"Bearer \(AuthService.instance.authToken)",
-    "Content-Type": "application/json; charset=utf-8"
-]
+//let BEARER_HEADER = [
+//    "Authorization":"Bearer \(AuthService.instance.authToken)",
+//    "Content-Type": "application/json; charset=utf-8"
+//]
 
 
 

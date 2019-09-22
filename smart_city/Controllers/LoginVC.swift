@@ -19,25 +19,62 @@ class LoginVC: UIViewController {
     
     @IBOutlet weak var loginPressed: RoundedButton!
     
+    @available(iOS 13.0, *)
     @IBAction func loginWasPressed(_ sender: Any) {
+        spinner.isHidden = false
+        spinner.startAnimating()
         
-        guard let email = usernameTxt.text , usernameTxt.text != "" else { return }
-        guard let pass = passwordTxt.text , passwordTxt.text != "" else { return }
+        guard let email = usernameTxt.text , usernameTxt.text != "" else {
+            
+            
+            return }
+        guard let pass = passwordTxt.text , passwordTxt.text != "" else {
+            simpleAlert(title: "Error", msg: "Please fill out all fields.")
+
+            return }
         
         AuthService.instance.loginUser(email: email, password: pass) { (sucess) in
             
             if sucess{
                 
-                AuthService.instance.findUserByEmail(completion: { (sucess) in
                 
-                    print("Sucess \(sucess)")
-                    self.spinner.isHidden = true
-                    self.spinner.stopAnimating()
-                    self.dismiss(animated: true, completion: nil)
+                EnvironmentService.instance.findCurrentParameter { (sucess) in
                     
+                    if sucess{
+                    
+                        print("Sucess\(sucess)")
+                    
+                    }
+                }
+                
+                AuthService.instance.findUserByEmail(completion: { (sucess) in
+
+                    if sucess{
+
+                        print("Sucess \(sucess)")
+                        self.spinner.isHidden = true
+                        self.spinner.stopAnimating()
+                        NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+                        let dashboardVC = DashboardVC()
+                        dashboardVC.modalPresentationStyle = .pageSheet
+                        self.present(dashboardVC, animated: true, completion: nil)
+
+
+//                        presentDetail(viewControllerToPresent: )
+                        print("logged in user!",AuthService.instance.authToken)
+
+//                        self.dismiss(animated: true, completion: nil)
+                    }else{
+
+                        self.simpleAlert(title: "Error", msg: "Something wrong")
+
+//
+                    }
+
                 })
-                print("logged in user!",AuthService.instance.authToken)
+            
             }
+            
         }
         
         

@@ -22,9 +22,10 @@ class DashboardVC: UIViewController {
     
     var forcastVC:ForeCastVC!
     var visualEffectView:UIVisualEffectView!
+    var environment = Environment()
     
-    let carHeight:CGFloat  = 800
-    let cardHandelAreaHeight:CGFloat = 400
+    var carHeight:CGFloat  = 600.5
+    var cardHandelAreaHeight:CGFloat!
     
     var cardVisible =  false
     var nextState:CardState{
@@ -41,42 +42,60 @@ class DashboardVC: UIViewController {
     @IBOutlet weak var inforView: RoundedView!
     
     // simple line with custom x axis labels
-    let xLabels: [String] = ["70", "69", "90", "20", "30", "40"]
+    let xLabels: [Double] = [70, 69, 90, 20, 30, 40]
     let nameLabels:[String] = ["Temperature", "UV", "Rain", "Dust", "Humidity", "Co2"]
     @IBOutlet weak var lineChart: LineChartView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCard()
         
-        setLineChart(name: xLabels, values: data2)
+        let  cardHandelAreaHeight1 = (self.view.bounds.height / self.view.bounds.width) * 200
+        
+        print("card height\(cardHandelAreaHeight1)")
+        
+        cardHandelAreaHeight  = cardHandelAreaHeight1-80
+        setupCard(cardHandelAreaHeight1: cardHandelAreaHeight)
 
+       
+        print("co2\(environment.fetchParameterConcurent())")
         self.forcastVC.view.layer.cornerRadius = 20
 
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        setLineChart(name:nameLabels , values: xLabels)
     }
     
     func setLineChart(name:[String],values:[Double])  {
         
         var lineArray:[ChartDataEntry] = []
         
-        for row in 0..<name.count{
+        for row in 0..<values.count{
             
             let data:ChartDataEntry = ChartDataEntry(x: Double(row), y: values[row])
             lineArray.append(data)
         }
         let lineDataSet:LineChartDataSet = LineChartDataSet(entries: lineArray, label: "Air Quality")
         
-        let linedata:LineChartData = LineChartData(dataSet: lineDataSet )
+        let linedata:LineChartData? = LineChartData(dataSet: lineDataSet )
         
-        lineChart.data = linedata
-        lineChart.animate(xAxisDuration: 2, easingOption: .easeInSine)
+//        if linedata !=  nil{
+        guard  case lineChart.data = linedata  else {
+                return
+//            }
+
+        }
+        
+//        lineChart.data = linedata
+//        lineChart.animate(xAxisDuration: 2, easingOption: .easeInSine)
         
     }
     
     
     
-    func setupCard()  {
+    func setupCard(cardHandelAreaHeight1:CGFloat)  {
         
         
         visualEffectView = UIVisualEffectView()
@@ -87,7 +106,7 @@ class DashboardVC: UIViewController {
         self.addChild(forcastVC)
         self.view.addSubview(forcastVC.view)
         
-        forcastVC.view.frame = CGRect(x: 0, y: self.view.frame.height -  cardHandelAreaHeight, width: self.view.bounds.width, height: carHeight)
+        forcastVC.view.frame = CGRect(x: 0, y: self.view.frame.height -  cardHandelAreaHeight1, width: self.view.bounds.width, height: carHeight)
         
         forcastVC.view.clipsToBounds = true
         
@@ -125,7 +144,7 @@ class DashboardVC: UIViewController {
             frameAnimator.startAnimation()
             runningAnimations.append(frameAnimator)
             
-            
+        
             
         }
     }

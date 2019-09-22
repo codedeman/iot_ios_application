@@ -7,3 +7,15 @@
 //
 
 import Foundation
+import UIKit
+import SocketIO
+
+class SocketService: NSObject {
+    
+    static let instance = SocketService()
+    
+    override init() {
+        super.init()
+    }
+
+}

@@ -92,10 +92,7 @@ class  AuthService {
         let body: [String: Any] = [
             "token":authToken
         ]
-        
-        print("hello \(body)")
-        
-//        print("token here \(authToken)")
+    
         Alamofire.request(URL_USER_BY_EMAIL, method: .post, parameters: body,encoding: JSONEncoding.default,headers: HEADER).responseJSON { (response) in
             
             var arr1 = [String]()
@@ -123,11 +120,11 @@ class  AuthService {
                                 let evvalue:Dictionary<String,AnyObject> = castvalue as! Dictionary<String,AnyObject>
                                 
                                 let arr:Dictionary<String,AnyObject> = evvalue["datas"] as! Dictionary<String, AnyObject>
-                                
-//                                print("data \(arr["temp"])")
+        
                                 
                                 arr1.append(arr["temp"] as! String)
-                            
+                                print("data1 \(arr1.count)")
+
                                 
                             }
                         
@@ -135,10 +132,8 @@ class  AuthService {
 
                     }
                     print("data \(arr1.count)")
-
-
-                
                 }
+                completion(true)
 
                 
             } else {
