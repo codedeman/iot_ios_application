@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
+
 
 class LoginVC: UIViewController {
+    
+
 
     @IBOutlet weak var usernameTxt: UITextField!
     
@@ -38,14 +42,15 @@ class LoginVC: UIViewController {
             if sucess{
                 
                 
-                EnvironmentService.instance.findCurrentParameter { (sucess) in
-                    
-                    if sucess{
-                    
-                        print("Sucess\(sucess)")
-                    
-                    }
-                }
+//                EnvironmentService.instance.findCurrentParameter { (sucess) in
+//
+//                    if sucess{
+//
+//                        print("Sucess\(sucess)")
+//                        print("hhahhaha\(EnvironmentService.instance.dust)")
+//
+//                    }
+//                }
                 
                 AuthService.instance.findUserByEmail(completion: { (sucess) in
 
@@ -54,13 +59,19 @@ class LoginVC: UIViewController {
                         print("Sucess \(sucess)")
                         self.spinner.isHidden = true
                         self.spinner.stopAnimating()
-                        NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
-                        let dashboardVC = DashboardVC()
-                        dashboardVC.modalPresentationStyle = .pageSheet
-                        self.present(dashboardVC, animated: true, completion: nil)
+                        let storyboard  =  UIStoryboard(name: "Main", bundle: Bundle.main)
+                               let authVC = storyboard.instantiateViewController(withIdentifier: "DashboardVC")
+                        self.present(authVC, animated: true)
+//                        let dashboardVC = DashboardVC()
+//                        self.present(dashboardVC, animated:true, completion:nil)
 
 
-//                        presentDetail(viewControllerToPresent: )
+
+                        let saveSuccessful: Bool = KeychainWrapper.standard.set(AuthService.instance.authToken, forKey: "token")
+
+                        print("token \(saveSuccessful)")
+
+
                         print("logged in user!",AuthService.instance.authToken)
 
 //                        self.dismiss(animated: true, completion: nil)

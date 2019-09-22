@@ -14,16 +14,49 @@ class EnvironmentService {
     static let instance = EnvironmentService()
     
     let token =  AuthService.instance.authToken
+    
+    public private(set) var temperature: String!
+    public private(set) var uv: String!
+    public private(set) var fire: String!
+    public private(set) var gas : String!
+    public private(set) var rain: String!
+    public private(set) var dust: String!
+    public private(set) var humidity: String!
+    public private(set) var co2: String!
+    
+    func setParameter(result:[String:Any])  {
+        
+        
+        temperature = result["temp"] as? String
+        rain = result["rain"] as? String
 
+        gas = result["gas"] as? String
+
+        fire  = result["fire"] as? String
+
+        co2 = result["co2"] as? String
+
+        uv = result["uv"] as? String
+        dust = result["dust"] as? String
+
+        humidity = result["humidity"] as? String
+        
+        
+    }
+    
+//    var environmentParameter:[]
+
+    
     func findCurrentParameter(completion: @escaping CompletionHandler) {
         
         let body: [String: Any] = [
             "token": token
         ]
+        
     
         Alamofire.request(URL_GET_CURRENT, method: .post, parameters: body,encoding: JSONEncoding.default,headers: HEADER).responseJSON { (response) in
             
-            var  envronmentModel =  Environment()
+            var  envronmentModel = [Environment]()
          
             if response.result.error == nil {
                 guard let data = response.data else { return }
@@ -49,32 +82,10 @@ class EnvironmentService {
                                 
                                 if  let result:Dictionary<String,AnyObject> = evvalue["datas"] as? Dictionary<String, AnyObject>{
                                     
-                                    let getenvironment = Environment(result: result)
-                                    
-//                                    envronmentModel.fetchParameterConcurent(result: result)
+                                    self.setParameter(result: result)
                                     
                                     
-//                                    let temperature = result["temp"] as! String
-//                                    let  rain = result["rain"] as! String
-//                                    let gas = result["gas"] as! String
-//
-//                                    let fire  = result["fire"] as! String
-//                                    let co2 = result["co2"] as! String
-//
-//                                    let uv = result["uv"] as! String
-//                                    let dust = result["dust"] as! String
-//
-//                                    let humidity = result["humidity"] as! String
-//
-//                                    let convertDustValue = Double(dust)
-//
-//                                    let api = ((convertDustValue!/1024) - 0.0356) * 120000 * 0.03
                                     
-                                
-                                    
-//                                    let getenvironment = Environment(temperature: temperature,uv: uv,fire: fire,gas : gas,rain: rain,dust: String(api),humidity: humidity,co2: co2)
-                                    
-//                                    print("environment \(getenvironment.co2)")
                                     
                                     
                                 }

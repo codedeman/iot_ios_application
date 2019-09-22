@@ -8,6 +8,9 @@
 
 import UIKit
 
+import SwiftKeychainWrapper
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -15,6 +18,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        let retrievedToken: String? = KeychainWrapper.standard.string(forKey: "token")
+        
+        if (retrievedToken != nil)  {
+            
+            let storyboard  =  UIStoryboard(name: "Main", bundle: Bundle.main)
+            let authVC = storyboard.instantiateViewController(withIdentifier: "DashboardVC")
+            window?.makeKeyAndVisible()
+                       window?.rootViewController?.present(authVC, animated: true, completion: nil)
+
+
+        }
+
         // Override point for customization after application launch.
         return true
     }

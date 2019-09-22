@@ -17,12 +17,13 @@ class DashboardVC: UIViewController {
         
     }
    
+    @IBOutlet weak var apiValue: UILabel!
     let data:[Int]  = [43, 53]
     let data2: [Double] = [1, 3, 5, 13, 17, 20]
     
     var forcastVC:ForeCastVC!
     var visualEffectView:UIVisualEffectView!
-    var environment = Environment()
+    var environment:Environment!
     
     var carHeight:CGFloat  = 600.5
     var cardHandelAreaHeight:CGFloat!
@@ -41,6 +42,7 @@ class DashboardVC: UIViewController {
     
     @IBOutlet weak var inforView: RoundedView!
     
+    
     // simple line with custom x axis labels
     let xLabels: [Double] = [70, 69, 90, 20, 30, 40]
     let nameLabels:[String] = ["Temperature", "UV", "Rain", "Dust", "Humidity", "Co2"]
@@ -53,19 +55,63 @@ class DashboardVC: UIViewController {
         
         print("card height\(cardHandelAreaHeight1)")
         
-        cardHandelAreaHeight  = cardHandelAreaHeight1-80
+        cardHandelAreaHeight  = cardHandelAreaHeight1-90
         setupCard(cardHandelAreaHeight1: cardHandelAreaHeight)
 
        
-        print("co2\(environment.fetchParameterConcurent())")
+
         self.forcastVC.view.layer.cornerRadius = 20
+//        apiValue.text = "\(EnvironmentService.instance.dust)"
 
-
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        setLineChart(name:nameLabels , values: xLabels)
+        
+        EnvironmentService.instance.findCurrentParameter { (sucess) in
+            
+            
+//            if sucess{
+            
+            
+                self.apiValue.text = "\(self.aqiCaculation())"
+
+            
+//            }
+//
+//            self.apiValue.text = "0"
+
+            
+//                    apiValue.text = "\(EnvironmentService.instance.dust)"
+//
+//
+//            print("api value \(self.aqiCaculation())")
+//            print("Dust value \(EnvironmentService.instance.dust)")
+//
+//
+            
+        }
+        
+        
+
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        
+    }
+    
+    func aqiCaculation()->Int{
+           
+        let converValue = Double(EnvironmentService.instance.dust) ?? 0
+           let api = ((converValue/1024) - 0.0356) * 120000 * 0.035
+            
+        let roundvalue = Int(api)
+        
+           
+           return roundvalue
+           
     }
     
     func setLineChart(name:[String],values:[Double])  {
@@ -88,7 +134,7 @@ class DashboardVC: UIViewController {
 
         }
         
-//        lineChart.data = linedata
+        lineChart.data = linedata
 //        lineChart.animate(xAxisDuration: 2, easingOption: .easeInSine)
         
     }

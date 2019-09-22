@@ -6,4 +6,6 @@ target 'smart_city' do
   pod 'SwiftyJSON'
   pod 'Socket.IO-Client-Swift'
   pod 'Charts'
+  pod 'SwiftKeychainWrapper'
+
 end
