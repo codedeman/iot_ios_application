@@ -39,7 +39,6 @@ struct Environment {
             self.humidity = humidity
             self.co2 = co2
             
-            
         }
     
     func fetchParameterConcurent()->Double{

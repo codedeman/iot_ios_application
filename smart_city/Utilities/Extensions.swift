@@ -38,10 +38,7 @@ extension UIViewController {
       func presentDetail(viewControllerToPresent: UIViewController)   {
           
           let transition = CATransition()
-          transition.duration = 0.4
-          //        transition.type =  CATransitionType.path(withComponents: [])
-          //        transition.subtype = CATransitionSubtype.fromRight
-          
+          transition.duration = 0.4          
           self.view.window?.layer.add(transition, forKey: kCATransition)
           
           present(viewControllerToPresent, animated: false, completion: nil)
@@ -49,3 +46,50 @@ extension UIViewController {
       }
    
 }
+
+extension String{
+    
+     func htmlDecoded(input:String) ->String{
+            
+        var temperature = ""
+        
+        let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [
+            .documentType: NSAttributedString.DocumentType.html,
+            .characterEncoding: String.Encoding.utf8.rawValue
+        ]
+
+        
+        if let data = input.data(using:String.Encoding.utf8){
+            
+            
+            
+            do{
+                
+                let usescaped = try  NSAttributedString(data: data, options: options, documentAttributes: nil)
+                
+                print("temperature:\(usescaped.string)")
+                temperature = usescaped.string
+                
+            }catch{
+
+                print("Error")
+            }
+            
+            
+            
+            return temperature
+            
+            
+        }
+            
+
+        return "---"
+            
+
+    }
+        
+    
+}
+
+
+

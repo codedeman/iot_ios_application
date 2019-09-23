@@ -60,10 +60,7 @@ class DashboardVC: UIViewController {
         cardHandelAreaHeight  = cardHandelAreaHeight1-90
         setupCard(cardHandelAreaHeight1: cardHandelAreaHeight)
 
-       
-
         self.forcastVC.view.layer.cornerRadius = 20
-        setLineChart(name: nameLabels, values: xLabels)
     
     }
     
@@ -72,17 +69,14 @@ class DashboardVC: UIViewController {
         
         EnvironmentService.instance.findCurrentParameter { (sucess) in
 
-
-
-            
             self.apiValue.text = "\(self.aqiCaculation())"
-//            let data = EnvironmentService.instance.getEnvironment()
             self.concurentStatus.text = "\(Thresholds.instance.aqiThreshold(value: self.aqiCaculation()))"
      
         }
         EnvironmentService.instance.findAllParameter { (sucess) in
             
-            print("data dd\(EnvironmentService.instance.convertAqi())")
+            self.setLineChart(name: self.nameLabels, values: EnvironmentService.instance.convertDust())
+
         }
         
         
@@ -102,7 +96,7 @@ class DashboardVC: UIViewController {
         let roundvalue = Int(api)
         
            
-           return roundvalue
+        return roundvalue
            
     }
     

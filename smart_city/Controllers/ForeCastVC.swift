@@ -20,6 +20,9 @@ class ForeCastVC: UIViewController {
     @IBOutlet weak var forecastTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let temperature = "75&deg"
+//        htmlDecoded(input: temperature)
     
         print("data \(EnvironmentService.instance.environmentParameters())")
         forecastTableView.register(UINib(nibName: "ForeCastCell", bundle: nil), forCellReuseIdentifier: "ForeCastCell")
@@ -59,12 +62,31 @@ extension ForeCastVC:UITableViewDataSource,UITableViewDelegate{
         EnvironmentService.instance.findCurrentParameter { (sucess) in
             
             let data = EnvironmentService.instance.getEnvironment()[indexPath.row]
+            
+            let intArray = EnvironmentService.instance.getEnvironment().compactMap(Int.init)
+            
+            let arrOfInt = intArray.map { (value) -> Int? in return Int(value)}
         
-//            cell.configureCell(data: data)
             cell.value.text = data
             cell.environmentPrameter.text = self.nameLabels[indexPath.row]
+            
+            
+            if self.nameLabels[indexPath.row] == "Temperature"{
+                
+                cell.environmentStatus.text = "\(Thresholds.instance.uvThreshold(value:arrOfInt[0]! ))"
+                
+                let temp =  "\(EnvironmentService.instance.temperature)&deg"
+                
+                cell.value.text = "".htmlDecoded(input: temp)
+                
+                
+
+            }
 
             if self.nameLabels[indexPath.row] == "UV"{
+                
+            
+                cell.environmentStatus.text = "\(Thresholds.instance.uvThreshold(value:arrOfInt[1]! ))"
             
                 cell.background.backgroundColor = self.hexStringToUIColor(hex: "#6fccb0")
             }
@@ -96,6 +118,14 @@ extension ForeCastVC:UITableViewDataSource,UITableViewDelegate{
                 
             }
             
+//            if self.nameLabels[indexPath.row] == "Dust"{
+//
+//                cell.environmentStatus.text = "\(Thresholds.instance.uvThreshold(value:arrOfInt[5]! ))"
+//
+//
+//
+//            }
+            
         }
         
         
@@ -125,6 +155,8 @@ extension ForeCastVC:UITableViewDataSource,UITableViewDelegate{
         )
     }
     
+   
     
 
 }
+

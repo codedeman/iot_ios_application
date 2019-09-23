@@ -95,9 +95,7 @@ class EnvironmentService {
                                     let parameter = Environment(temperature: self.temperature, uv: self.uv, fire: self.fire, gas: self.gas, rain: self.gas, dust: self.dust, humidity: self.humidity, co2: self.humidity)
                                     
                                     self.environmentModel.append(parameter)
-                                    
-                                    
-                                    
+                                
                                     
                                 }
         
@@ -107,7 +105,6 @@ class EnvironmentService {
                         }
 
                     }
-//                    print("data \(arr1.count)")
                 }
                 completion(true)
 
@@ -146,12 +143,10 @@ class EnvironmentService {
                             
                             if let environtment =  dataset["times"]{
                                 
-                                
                                 let environmentvalue = environtment as! Array<AnyObject>
                                 
                                 
                                 for castvalue in environmentvalue{
-                                
                                 
                                     let evvalue:Dictionary<String,AnyObject> = castvalue as! Dictionary<String,AnyObject>
                                     
@@ -196,30 +191,49 @@ class EnvironmentService {
     
     func getEnvironment() -> [String] {
         
-        let environment = [self.temperature,self.uv,self.fire,self.gas,self.rain,self.dust]
+        let  environment:[String] = [self.temperature,self.uv,self.fire,self.gas,self.rain,self.dust]
+
+        
+//        let doubleArray = environment.compactMap(Double.init)
+//
+//        let arrOfDoubles = doubleArray.map { (value) -> Double? in
+//            return Double(value)
+//        }
+        
+        return environment
         
         
-        return environment as! [String]
- 
+    
             
     }
     
-    func  convertAqi()  {
+    func  convertDust() ->[Double] {
         
-        let doubleArray = dustAqi.flatMap(Double.init)
-        let sum = doubleArray.reduce(0, +)
+        var aqiArr = [Double]()
         
-        print("sum \(sum)")
-
+        let doubleArray = dustAqi.compactMap(Double.init)
         
+        let arrOfDoubles = doubleArray.map { (value) -> Double? in
+            return Double(value)
+        }
+        
+        for aqi in arrOfDoubles{
+            
+            let api = ((aqi!/1024) - 0.0356) * 120000 * 0.035
+            aqiArr.append(aqi!)
+        }
+        
+        
+        let reversvalue = aqiArr.reversed()
+        
+        let arraySlice = reversvalue.prefix(12)
+        let newArray = Array(arraySlice)
+        
+        
+        return newArray
     }
-    
-    
-    
-    
-    
-    
-    
-    
+
 }
+
+
 //static let instance = MessageService()
