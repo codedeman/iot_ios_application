@@ -93,7 +93,7 @@ class  AuthService {
             "token":authToken
         ]
     
-        Alamofire.request(URL_USER_BY_EMAIL, method: .post, parameters: body,encoding: JSONEncoding.default,headers: HEADER).responseJSON { (response) in
+        Alamofire.request(URL_GET_ALL, method: .post, parameters: body,encoding: JSONEncoding.default,headers: HEADER).responseJSON { (response) in
             
             var arr1 = [String]()
          

@@ -20,6 +20,7 @@
 		18098F38232A0A5300FC6A59 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18098F37232A0A5300FC6A59 /* Constants.swift */; };
 		18129B2A2332242E00384692 /* ForeCastVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18129B282332242E00384692 /* ForeCastVC.swift */; };
 		18129B2B2332242E00384692 /* ForeCastVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18129B292332242E00384692 /* ForeCastVC.xib */; };
+		181447E92338658E00D4FBBF /* Thresholds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181447E82338658E00D4FBBF /* Thresholds.swift */; };
 		182ACBBE23346D37006BCFB6 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182ACBBD23346D37006BCFB6 /* Environment.swift */; };
 		18311D2E232B60DF00D7A813 /* CreateAcountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18311D2D232B60DF00D7A813 /* CreateAcountVC.swift */; };
 		184AFB27233606B70065D0F6 /* EnvironmentServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184AFB26233606B70065D0F6 /* EnvironmentServices.swift */; };
@@ -70,6 +71,7 @@
 		18098F37232A0A5300FC6A59 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		18129B282332242E00384692 /* ForeCastVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeCastVC.swift; sourceTree = "<group>"; };
 		18129B292332242E00384692 /* ForeCastVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForeCastVC.xib; sourceTree = "<group>"; };
+		181447E82338658E00D4FBBF /* Thresholds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thresholds.swift; sourceTree = "<group>"; };
 		182ACBBD23346D37006BCFB6 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Environment.swift; path = smart_city/Controllers/Environment.swift; sourceTree = SOURCE_ROOT; };
 		18311D2D232B60DF00D7A813 /* CreateAcountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAcountVC.swift; sourceTree = "<group>"; };
 		184AFB26233606B70065D0F6 /* EnvironmentServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentServices.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				18098F37232A0A5300FC6A59 /* Constants.swift */,
 				18CF3E49232F1B0C00AC4106 /* LineChart.swift */,
 				184AFB2A23366AA30065D0F6 /* Extensions.swift */,
+				181447E82338658E00D4FBBF /* Thresholds.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				1884356323307076004F1AAD /* DashboardVC.swift in Sources */,
 				18CF3E4A232F1B0C00AC4106 /* LineChart.swift in Sources */,
 				184AFB2B23366AA30065D0F6 /* Extensions.swift in Sources */,
+				181447E92338658E00D4FBBF /* Thresholds.swift in Sources */,
 				1884356623311F25004F1AAD /* ForeCastCell.swift in Sources */,
 				18098EF92327FEC600FC6A59 /* AppDelegate.swift in Sources */,
 				18098F3223287B5800FC6A59 /* LoginVC.swift in Sources */,

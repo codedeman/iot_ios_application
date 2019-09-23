@@ -18,6 +18,8 @@ class DashboardVC: UIViewController {
     }
    
     @IBOutlet weak var apiValue: UILabel!
+    
+    @IBOutlet weak var concurentStatus: UILabel!
     let data:[Int]  = [43, 53]
     let data2: [Double] = [1, 3, 5, 13, 17, 20]
     
@@ -61,8 +63,7 @@ class DashboardVC: UIViewController {
        
 
         self.forcastVC.view.layer.cornerRadius = 20
-//        apiValue.text = "\(EnvironmentService.instance.dust)"
-
+        setLineChart(name: nameLabels, values: xLabels)
     
     }
     
@@ -70,27 +71,18 @@ class DashboardVC: UIViewController {
         super.viewWillAppear(animated)
         
         EnvironmentService.instance.findCurrentParameter { (sucess) in
-            
-            
-//            if sucess{
-            
-            
-                self.apiValue.text = "\(self.aqiCaculation())"
+
+
 
             
-//            }
-//
-//            self.apiValue.text = "0"
-
+            self.apiValue.text = "\(self.aqiCaculation())"
+//            let data = EnvironmentService.instance.getEnvironment()
+            self.concurentStatus.text = "\(Thresholds.instance.aqiThreshold(value: self.aqiCaculation()))"
+     
+        }
+        EnvironmentService.instance.findAllParameter { (sucess) in
             
-//                    apiValue.text = "\(EnvironmentService.instance.dust)"
-//
-//
-//            print("api value \(self.aqiCaculation())")
-//            print("Dust value \(EnvironmentService.instance.dust)")
-//
-//
-            
+            print("data dd\(EnvironmentService.instance.convertAqi())")
         }
         
         
@@ -127,15 +119,10 @@ class DashboardVC: UIViewController {
         
         let linedata:LineChartData? = LineChartData(dataSet: lineDataSet )
         
-//        if linedata !=  nil{
-        guard  case lineChart.data = linedata  else {
-                return
-//            }
-
-        }
-        
         lineChart.data = linedata
-//        lineChart.animate(xAxisDuration: 2, easingOption: .easeInSine)
+        
+
+        lineChart.animate(xAxisDuration: 0.5, easingOption: .easeInSine)
         
     }
     

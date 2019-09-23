@@ -14,13 +14,19 @@ class ForeCastCell: UITableViewCell {
     @IBOutlet weak var value: UILabel!
     
     @IBOutlet weak var environmentPrameter: UILabel!
+    
+    @IBOutlet weak var environmentStatus: UILabel!
     @IBOutlet weak var background: RoundedView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    
+    func configureCell(data:Environment)  {
+        
+        self.value.text = data.co2
+        
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

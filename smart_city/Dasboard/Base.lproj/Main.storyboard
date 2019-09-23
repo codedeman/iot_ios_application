@@ -82,6 +82,7 @@
                     </view>
                     <connections>
                         <outlet property="apiValue" destination="hHv-jR-7EA" id="PWI-N2-w5n"/>
+                        <outlet property="concurentStatus" destination="xKf-U8-0jz" id="JTg-LG-d8q"/>
                         <outlet property="inforView" destination="TRF-v6-fhl" id="G2L-FO-E1g"/>
                         <outlet property="lineChart" destination="84C-o5-tB9" id="sgq-Ox-C1j"/>
                     </connections>

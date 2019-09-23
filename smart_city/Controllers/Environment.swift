@@ -28,8 +28,19 @@ struct Environment {
         return dust
     }
     
-    
-
+    init(temperature:String,
+         uv:String,
+         fire:String,gas:String,rain:String,dust:String,humidity:String,co2:String) {
+            
+            self.temperature = temperature
+            self.uv = uv
+            self.gas = gas
+            self.rain = rain
+            self.humidity = humidity
+            self.co2 = co2
+            
+            
+        }
     
     func fetchParameterConcurent()->Double{
         

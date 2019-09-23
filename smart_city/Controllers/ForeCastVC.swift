@@ -13,6 +13,7 @@ class ForeCastVC: UIViewController {
     
     let xLabels: [String] = ["40", "30", "54", "69", "40", "70"]
     let nameLabels: [String] = ["Temperature", "UV", "Fire", "Gas", "Rain", "Dust","Humidity","Co2"]
+    let environment:[Environment] = []
 
     @IBOutlet weak var handleArea: UIView!
     
@@ -20,11 +21,24 @@ class ForeCastVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        print("data \(EnvironmentService.instance.environmentParameters())")
         forecastTableView.register(UINib(nibName: "ForeCastCell", bundle: nil), forCellReuseIdentifier: "ForeCastCell")
 
         forecastTableView.delegate =  self
         forecastTableView.dataSource = self
 
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        EnvironmentService.instance.findCurrentParameter { (sucess) in
+            
+            let data = EnvironmentService.instance.environmentParameters()
+            
+        
+//            print("Environment \(EnvironmentService.instance.environmentModel)")
+        }
+        
     }
 
 
@@ -41,23 +55,49 @@ extension ForeCastVC:UITableViewDataSource,UITableViewDelegate{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ForeCastCell", for: indexPath) as? ForeCastCell else {
             return ForeCastCell()
         }
-        cell.value.text = xLabels[indexPath.row]
-        cell.environmentPrameter.text = nameLabels[indexPath.row]
-
-        if nameLabels[indexPath.row] == "UV"{
         
-            cell.background.backgroundColor = hexStringToUIColor(hex: "#6fccb0")
-        }
-        if nameLabels[indexPath.row] == "Rain"{
+        EnvironmentService.instance.findCurrentParameter { (sucess) in
+            
+            let data = EnvironmentService.instance.getEnvironment()[indexPath.row]
         
-            cell.background.backgroundColor = hexStringToUIColor(hex: "#653ac9")
+//            cell.configureCell(data: data)
+            cell.value.text = data
+            cell.environmentPrameter.text = self.nameLabels[indexPath.row]
 
-        }
-        if nameLabels[indexPath.row] == "Fire"{
+            if self.nameLabels[indexPath.row] == "UV"{
             
-            cell.background.backgroundColor = hexStringToUIColor(hex: "#ee3661")
+                cell.background.backgroundColor = self.hexStringToUIColor(hex: "#6fccb0")
+            }
+            if self.nameLabels[indexPath.row] == "Rain"{
+                if EnvironmentService.instance.rain == "1"{
+                
+                    cell.environmentStatus.text = "Raining"
+                    cell.background.backgroundColor = self.hexStringToUIColor(hex: "#653ac9")
+
+                }else{
+                
+                
+                    cell.environmentStatus.text = "Normal"
+
+                
+                }
+
+            }
+            if self.nameLabels[indexPath.row] == "Fire"{
+                
+                if EnvironmentService.instance.fire == "1" {
+                    cell.environmentStatus.text = "Yes"
+                }
+                else{
+                
+                    cell.environmentStatus.text = "Normal"
+                }
+                cell.background.backgroundColor = self.hexStringToUIColor(hex: "#ee3661")
+                
+            }
             
         }
+        
         
         return cell
         
