@@ -4,8 +4,8 @@
 target 'smart_city' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
-  pod 'Socket.IO-Client-Swift'
   pod 'Charts'
   pod 'SwiftKeychainWrapper'
+  pod 'Socket.IO-Client-Swift', '~> 15.1.0'
 
 end

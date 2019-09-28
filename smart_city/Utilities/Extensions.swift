@@ -24,16 +24,16 @@ extension UIViewController {
           present(alert, animated: true, completion: nil)
       }
       
-      func dismissDetail()  {
-          let transition = CATransition()
-          transition.duration = 0.3
-          transition.type =  CATransitionType.push
-  //        transition.subtype = CATransitionSubtype.fromRight
-          
-          self.view.window?.layer.add(transition, forKey: kCATransition)
-          
-          dismiss(animated: false, completion: nil)
-      }
+//      func dismissDetail()  {
+//          let transition = CATransition()
+//          transition.duration = 0.3
+//          transition.type =  CATransitionType.push
+//  //        transition.subtype = CATransitionSubtype.fromRight
+//          
+//          self.view.window?.layer.add(transition, forKey: kCATransition)
+//          
+//          dismiss(animated: false, completion: nil)
+//      }
       
       func presentDetail(viewControllerToPresent: UIViewController)   {
           
@@ -67,7 +67,6 @@ extension String{
                 
                 let usescaped = try  NSAttributedString(data: data, options: options, documentAttributes: nil)
                 
-                print("temperature:\(usescaped.string)")
                 temperature = usescaped.string
                 
             }catch{

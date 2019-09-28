@@ -26,6 +26,8 @@
 		184AFB27233606B70065D0F6 /* EnvironmentServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184AFB26233606B70065D0F6 /* EnvironmentServices.swift */; };
 		184AFB292336265F0065D0F6 /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184AFB282336265F0065D0F6 /* SocketService.swift */; };
 		184AFB2B23366AA30065D0F6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184AFB2A23366AA30065D0F6 /* Extensions.swift */; };
+		1861A3AA233D96E600F948D8 /* ConfigurationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1861A3A8233D96E600F948D8 /* ConfigurationVC.swift */; };
+		1861A3AB233D96E600F948D8 /* ConfigurationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1861A3A9233D96E600F948D8 /* ConfigurationVC.xib */; };
 		1884356323307076004F1AAD /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884356223307076004F1AAD /* DashboardVC.swift */; };
 		1884356623311F25004F1AAD /* ForeCastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884356423311F25004F1AAD /* ForeCastCell.swift */; };
 		1884356723311F25004F1AAD /* ForeCastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1884356523311F25004F1AAD /* ForeCastCell.xib */; };
@@ -77,6 +79,8 @@
 		184AFB26233606B70065D0F6 /* EnvironmentServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentServices.swift; sourceTree = "<group>"; };
 		184AFB282336265F0065D0F6 /* SocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
 		184AFB2A23366AA30065D0F6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		1861A3A8233D96E600F948D8 /* ConfigurationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationVC.swift; sourceTree = "<group>"; };
+		1861A3A9233D96E600F948D8 /* ConfigurationVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigurationVC.xib; sourceTree = "<group>"; };
 		1884356223307076004F1AAD /* DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
 		1884356423311F25004F1AAD /* ForeCastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ForeCastCell.swift; path = smart_city/Controllers/ForeCastCell.swift; sourceTree = SOURCE_ROOT; };
 		1884356523311F25004F1AAD /* ForeCastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ForeCastCell.xib; path = smart_city/Controllers/ForeCastCell.xib; sourceTree = SOURCE_ROOT; };
@@ -198,6 +202,8 @@
 				1884356223307076004F1AAD /* DashboardVC.swift */,
 				18129B282332242E00384692 /* ForeCastVC.swift */,
 				18129B292332242E00384692 /* ForeCastVC.xib */,
+				1861A3A8233D96E600F948D8 /* ConfigurationVC.swift */,
+				1861A3A9233D96E600F948D8 /* ConfigurationVC.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -374,6 +380,7 @@
 				18098EFE2327FEC600FC6A59 /* Main.storyboard in Resources */,
 				1884356723311F25004F1AAD /* ForeCastCell.xib in Resources */,
 				18098F2C2327FFD800FC6A59 /* Authentication.storyboard in Resources */,
+				1861A3AB233D96E600F948D8 /* ConfigurationVC.xib in Resources */,
 				18129B2B2332242E00384692 /* ForeCastVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,6 +440,7 @@
 				18098EFB2327FEC600FC6A59 /* ViewController.swift in Sources */,
 				18311D2E232B60DF00D7A813 /* CreateAcountVC.swift in Sources */,
 				1884356323307076004F1AAD /* DashboardVC.swift in Sources */,
+				1861A3AA233D96E600F948D8 /* ConfigurationVC.swift in Sources */,
 				18CF3E4A232F1B0C00AC4106 /* LineChart.swift in Sources */,
 				184AFB2B23366AA30065D0F6 /* Extensions.swift in Sources */,
 				181447E92338658E00D4FBBF /* Thresholds.swift in Sources */,
@@ -545,7 +553,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -600,7 +608,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

@@ -65,7 +65,6 @@ class EnvironmentService {
     
         Alamofire.request(URL_GET_CURRENT, method: .post, parameters: body,encoding: JSONEncoding.default,headers: HEADER).responseJSON { (response) in
             
-         
             if response.result.error == nil {
                 guard let data = response.data else { return }
                 
@@ -78,16 +77,12 @@ class EnvironmentService {
                         let dataset:Dictionary<String,AnyObject> =  itemset as! Dictionary<String, AnyObject>
                         
                         if let environtment =  dataset["times"]{
-                            
-                            
                             let environmentvalue = environtment as! Array<AnyObject>
-                            
-                            
+                        
                             for castvalue in environmentvalue{
                             
-                            
                                 let evvalue:Dictionary<String,AnyObject> = castvalue as! Dictionary<String,AnyObject>
-                                
+                
                                 if  let result:Dictionary<String,AnyObject> = evvalue["datas"] as? Dictionary<String, AnyObject>{
                                     
                                     self.setParameter(result: result)
@@ -107,8 +102,6 @@ class EnvironmentService {
                     }
                 }
                 completion(true)
-
-
                 
             } else {
                 completion(false)
@@ -117,6 +110,7 @@ class EnvironmentService {
         }
     }
     
+   
     
 
         
@@ -125,8 +119,6 @@ class EnvironmentService {
             let body: [String: Any] = [
                 "token": token
             ]
-            
-        
             Alamofire.request(URL_GET_ALL, method: .post, parameters: body,encoding: JSONEncoding.default,headers: HEADER).responseJSON { (response) in
                 
              
@@ -152,8 +144,6 @@ class EnvironmentService {
                                     
                                     if  let result:Dictionary<String,AnyObject> = evvalue["datas"] as? Dictionary<String, AnyObject>{
                                         
-                                       
-                                        
                                             let dust = result["dust"] as? String
                                         
                                         self.dustAqi.append(dust!)
@@ -165,19 +155,88 @@ class EnvironmentService {
                             }
 
                         }
+                    print("dust \(self.dustAqi)")
                     }
                     completion(true)
-                    print("data \(self.dustAqi)")
-
-
-
-                    
                 } else {
                     completion(false)
                     debugPrint(response.result.error as Any)
                 }
             }
         }
+    
+
+    
+    func getPlaceIds(handler: @escaping (_ _placeID:[String])->() ) {
+               
+               let body: [String: Any] = [
+                   "token": token
+               ]
+                var place_idArray = [String]()
+        Alamofire.request(URL_GET_CURRENT, method: .post, parameters: body,encoding: JSONEncoding.default,headers: HEADER).responseJSON { (response) in
+
+                   if response.result.error == nil {
+                       guard let data = response.data else { return }
+                       
+                       let json =  try!  JSON(data: data)
+                       
+                      if  let item  =  json["places"].arrayObject{
+                       
+                           for itemset in item{
+                               
+                               let dataset:Dictionary<String,AnyObject> =  itemset as! Dictionary<String, AnyObject>
+                               
+                            guard  let place = dataset["place_id"]  as? String else {
+                                return
+                            }
+                            
+                                
+                                place_idArray.append(place)
+                                
+
+                           }
+                       }
+                        handler(place_idArray)
+                  
+               }
+           }
+        
+    }
+    
+    
+
+    
+    func configureDevice(device:String,switching:String,completion: @escaping CompletionHandler)  {
+        
+        let body: [String: Any] = [
+            "token": token,"device_name":device, "switch":switching
+        ]
+        
+        Alamofire.request(CONFIGURE_DEVICE_URL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADER).responseJSON { (response) in
+            
+            switch response.result{
+                
+            case .success:
+                
+                completion(true)
+                break
+            case .failure(_):
+                
+                completion(false)
+        
+                debugPrint(response.result.error as Any)
+                
+                print("false")
+
+            }
+        
+        
+    
+    }
+        
+}
+    
+    
     
     
     
@@ -187,6 +246,10 @@ class EnvironmentService {
         return environmentModel
         
           
+    }
+    
+    func getDust() -> String {
+           return dust
     }
     
     func getEnvironment() -> [String] {
@@ -207,7 +270,7 @@ class EnvironmentService {
             
     }
     
-    func  convertDust() ->[Double] {
+    func  aqiCaculationLineChart() ->[Double] {
         
         var aqiArr = [Double]()
         
@@ -219,21 +282,40 @@ class EnvironmentService {
         
         for aqi in arrOfDoubles{
             
-            let api = ((aqi!/1024) - 0.0356) * 120000 * 0.035
-            aqiArr.append(aqi!)
+            let apic:Double = ((aqi!/1024) - 0.0356) * 120000 * 0.035
+//            print("aqi caculation: \(aqic)")
+            aqiArr.append(apic)
         }
         
+        print("aqi \(aqiArr)")
         
         let reversvalue = aqiArr.reversed()
         
         let arraySlice = reversvalue.prefix(12)
         let newArray = Array(arraySlice)
+        print("array reverse \(newArray)")
+
         
         
         return newArray
     }
+    
+    func aqiCaculation()->Int{
+              
+        let converValue = Double(getDust()) ?? 0
+              let api = ((converValue/1024) - 0.0356) * 120000 * 0.035
+               
+           let roundvalue = Int(api)
+           
+              
+           return roundvalue
+              
+    }
 
 }
+
+
+   
 
 
 //static let instance = MessageService()

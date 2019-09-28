@@ -21,8 +21,6 @@ class ForeCastVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let temperature = "75&deg"
-//        htmlDecoded(input: temperature)
     
         print("data \(EnvironmentService.instance.environmentParameters())")
         forecastTableView.register(UINib(nibName: "ForeCastCell", bundle: nil), forCellReuseIdentifier: "ForeCastCell")
@@ -37,17 +35,28 @@ class ForeCastVC: UIViewController {
         EnvironmentService.instance.findCurrentParameter { (sucess) in
             
             let data = EnvironmentService.instance.environmentParameters()
-            
         
-//            print("Environment \(EnvironmentService.instance.environmentModel)")
         }
         
     }
 
 
-    
+    @IBAction func configureBtnWasPressed(_ sender: Any) {
+        
+        let configureVC =  ConfigurationVC()
+        configureVC.modalPresentationStyle = .overCurrentContext
+        
+        present(configureVC, animated: true) {
+            
+            print("cool")
+        }
+        
 
+    }
+    
 }
+
+
 extension ForeCastVC:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -73,11 +82,13 @@ extension ForeCastVC:UITableViewDataSource,UITableViewDelegate{
             
             if self.nameLabels[indexPath.row] == "Temperature"{
                 
-                cell.environmentStatus.text = "\(Thresholds.instance.uvThreshold(value:arrOfInt[0]! ))"
+                cell.environmentStatus.text = "\(Thresholds.instance.temperatureThreshold(value:arrOfInt[0]! ))"
                 
-                let temp =  "\(EnvironmentService.instance.temperature)&deg"
+                let temp =  "\(EnvironmentService.instance.temperature!)&deg"
                 
-                cell.value.text = "".htmlDecoded(input: temp)
+                
+                let temp1 = "".htmlDecoded(input: temp)+"C"
+                cell.value!.text = temp1
                 
                 
 
@@ -85,10 +96,14 @@ extension ForeCastVC:UITableViewDataSource,UITableViewDelegate{
 
             if self.nameLabels[indexPath.row] == "UV"{
                 
-            
+                
                 cell.environmentStatus.text = "\(Thresholds.instance.uvThreshold(value:arrOfInt[1]! ))"
             
                 cell.background.backgroundColor = self.hexStringToUIColor(hex: "#6fccb0")
+                let uv = "\(EnvironmentService.instance.uv!)mW/cm&sup2"
+                let uv1 = "".htmlDecoded(input: uv)
+                cell.value.text = uv1
+                
             }
             if self.nameLabels[indexPath.row] == "Rain"{
                 if EnvironmentService.instance.rain == "1"{
@@ -118,13 +133,18 @@ extension ForeCastVC:UITableViewDataSource,UITableViewDelegate{
                 
             }
             
-//            if self.nameLabels[indexPath.row] == "Dust"{
-//
-//                cell.environmentStatus.text = "\(Thresholds.instance.uvThreshold(value:arrOfInt[5]! ))"
-//
-//
-//
-//            }
+            
+            
+            if self.nameLabels[indexPath.row] == "Dust"{
+                
+                let dust = "\(EnvironmentService.instance.dust!)"+"mg/m&sup3"
+                
+                let dustconvert = "".htmlDecoded(input: dust)
+
+
+                cell.value.text =  dustconvert
+
+            }
             
         }
         

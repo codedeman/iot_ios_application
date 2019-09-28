@@ -39,15 +39,15 @@ class DashboardVC: UIViewController {
     var runningAnimations  = [UIViewPropertyAnimator]()
     
     var animationPRogressWhenInterrupted:CGFloat = 0
-    
-    
-    
+
     @IBOutlet weak var inforView: RoundedView!
     
     
     // simple line with custom x axis labels
     let xLabels: [Double] = [70, 69, 90, 20, 30, 40]
     let nameLabels:[String] = ["Temperature", "UV", "Rain", "Dust", "Humidity", "Co2"]
+    
+    var environtment:Environment!
     @IBOutlet weak var lineChart: LineChartView!
     
     override func viewDidLoad() {
@@ -61,7 +61,37 @@ class DashboardVC: UIViewController {
         setupCard(cardHandelAreaHeight1: cardHandelAreaHeight)
 
         self.forcastVC.view.layer.cornerRadius = 20
-    
+        
+        SocketService.instance.conectSocket { (sucess) in
+            
+            print("haha \(sucess)")
+        }
+        
+        SocketService.instance.conectSocket { (sucess) in
+            
+            print("test \(sucess)")
+        }
+        
+        EnvironmentService.instance.getPlaceIds { (place_id) in
+                       
+                       
+                for id in place_id{
+                          
+                    print("hello \(id)")
+                           
+                    SocketService.instance.getEnvironmentParameter(place_id: id) { (environment) in
+                               
+                            print("environent \(environment)")
+                    }
+                       
+                }
+        }
+        
+        SocketService.instance.getNotify()
+        
+        
+     
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,15 +99,18 @@ class DashboardVC: UIViewController {
         
         EnvironmentService.instance.findCurrentParameter { (sucess) in
 
-            self.apiValue.text = "\(self.aqiCaculation())"
-            self.concurentStatus.text = "\(Thresholds.instance.aqiThreshold(value: self.aqiCaculation()))"
+            self.apiValue.text = "\(EnvironmentService.instance.aqiCaculation())"+"AQI"
+            self.concurentStatus.text = "\(Thresholds.instance.aqiThreshold(value: EnvironmentService.instance.aqiCaculation()))"
      
         }
         EnvironmentService.instance.findAllParameter { (sucess) in
             
-            self.setLineChart(name: self.nameLabels, values: EnvironmentService.instance.convertDust())
+            self.setLineChart(name: self.nameLabels, values: EnvironmentService.instance.aqiCaculationLineChart())
 
         }
+        
+        
+           
         
         
 
@@ -88,23 +121,12 @@ class DashboardVC: UIViewController {
         
     }
     
-    func aqiCaculation()->Int{
-           
-        let converValue = Double(EnvironmentService.instance.dust) ?? 0
-           let api = ((converValue/1024) - 0.0356) * 120000 * 0.035
-            
-        let roundvalue = Int(api)
-        
-           
-        return roundvalue
-           
-    }
-    
+   
     func setLineChart(name:[String],values:[Double])  {
         
         var lineArray:[ChartDataEntry] = []
         
-        for row in 0..<values.count{
+        for row in 0..<name.count{
             
             let data:ChartDataEntry = ChartDataEntry(x: Double(row), y: values[row])
             lineArray.append(data)
@@ -141,13 +163,8 @@ class DashboardVC: UIViewController {
 
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DashboardVC.handleCardPan(recognizer:)))
 
-
-
         forcastVC.handleArea.addGestureRecognizer(tapGestureRecognizer)
         forcastVC.handleArea.addGestureRecognizer(panGestureRecognizer)
-
-        
-        
         
     }
     
@@ -159,7 +176,9 @@ class DashboardVC: UIViewController {
                 case .expanded:
                     self.forcastVC.view.frame.origin.y = self.view.frame.height - self.carHeight
                 case .collapsed:
-                    self.forcastVC.view.frame.origin.y = self.view.frame.height - self.cardHandelAreaHeight
+                    self.forcastVC.view.frame.origin.y =  (self.view.frame.height - self.cardHandelAreaHeight)+20
+                        
+//                        self.view.frame.height - self.cardHandelAreaHeight;
                 }
             }
             
@@ -198,11 +217,11 @@ class DashboardVC: UIViewController {
             
             let translation = recognizer.translation(in: self.forcastVC.handleArea)
 
-            var fractionComplete = translation.y / carHeight
-            fractionComplete = cardVisible ? fractionComplete : -fractionComplete
-            updateInteractiveTransition(fractionCompleted: fractionComplete)
-        case .ended:
-            continueInteractiveTransition()
+//        var fractionComplete = translation.y / carHeight - 200.0
+//            fractionComplete = cardVisible ? fractionComplete : -fractionComplete
+        updateInteractiveTransition(fractionCompleted: 100.0)
+        case .ended: break
+//            continueInteractiveTransition()
 
         default:
             break

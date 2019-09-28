@@ -16,6 +16,8 @@ let URL_GET_ALL = "\(BASE_URL)/data/get"
 
 let URL_GET_CURRENT = "\(BASE_URL)/data/get/current"
 
+let CONFIGURE_DEVICE_URL = "\(BASE_URL)/device/switch"
+
 
 
 // Notification Constants
@@ -35,6 +37,18 @@ let ForecastSegure = "ForeCastCell"
 let TOKEN_KEY = "token"
 let LOGGED_IN_KEY = "loggedIn"
 let USER_EMAIL = "userEmail"
+// State device
+let SWITCH_ON = "1"
+let SWITCH_OFF = "0"
+
+// device
+let FAN = "fan_1"
+let PUMP = "pump_1"
+
+let LIGHT = "light_1"
+
+let AWNING = "awning_1"
+
 
 // Headers
 let HEADER = [
