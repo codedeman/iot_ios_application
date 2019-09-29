@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             let storyboard  =  UIStoryboard(name: "Main", bundle: Bundle.main)
             let authVC = storyboard.instantiateViewController(withIdentifier: "DashboardVC")
-//            window?.makeKeyAndVisible()
+            window?.makeKeyAndVisible()
                        window?.rootViewController?.present(authVC, animated: true, completion: nil)
 
 

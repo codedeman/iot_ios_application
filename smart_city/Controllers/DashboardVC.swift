@@ -62,33 +62,35 @@ class DashboardVC: UIViewController {
 
         self.forcastVC.view.layer.cornerRadius = 20
         
-        SocketService.instance.conectSocket { (sucess) in
-            
-            print("haha \(sucess)")
-        }
+      
         
-        SocketService.instance.conectSocket { (sucess) in
-            
-            print("test \(sucess)")
-        }
+//        SocketService.instance.conectSocket { (sucess) in
+//
+//            print("haha \(sucess)")
+//        }
+//
+//        SocketService.instance.conectSocket { (sucess) in
+//
+//            print("test \(sucess)")
+//        }
         
-        EnvironmentService.instance.getPlaceIds { (place_id) in
-                       
-                       
-                for id in place_id{
-                          
-                    print("hello \(id)")
-                           
-                    SocketService.instance.getEnvironmentParameter(place_id: id) { (environment) in
-                               
-                            print("environent \(environment)")
-                    }
-                       
-                }
-        }
-        
-        SocketService.instance.getNotify()
-        
+//        EnvironmentService.instance.getPlaceIds { (place_id) in
+//
+//
+//                for id in place_id{
+//
+//                    print("hello \(id)")
+//
+//                    SocketService.instance.getEnvironmentParameter(place_id: id) { (environment) in
+//
+//                            print("environent \(environment)")
+//                    }
+//
+//                }
+//        }
+//
+//        SocketService.instance.getNotify()
+//
         
      
         

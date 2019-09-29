@@ -10,6 +10,7 @@ import UIKit
 
 class ConfigurationVC: UIViewController {
 
+    var configure:Configure!
     @IBOutlet weak var pumpState: UISwitch!
     
     @IBOutlet weak var fanState: UISwitch!
@@ -24,8 +25,48 @@ class ConfigurationVC: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(backWasPressed))
         tap.numberOfTapsRequired = 1
         bgView.addGestureRecognizer(tap)
+        
+  
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+        
+           ConfigureService.instance.getSate { (sucess) in
+            
+                if sucess{
+                    
+                    print("here1 \(self.configure?.awning)")
+                    
+                    let data =  ConfigureService.instance.getAwning()
+                    
+                    
+                        if ConfigureService.instance.getAwning() == "1"{
+                            
+                            print("here \(data)")
+                            
+                            self.awningState.setOn(true, animated: true)
+
+                            
+                        }else if ConfigureService.instance.getAwning() == "0"{
+                            self.awningState.setOn(false, animated: true)
+
+                            
+                            
+                        }
+                    
+                }
+            
+            
+                        
+            }
+          
+        
+        
     }
     
     @IBAction func pumpSwitch(_ sender: Any) {
