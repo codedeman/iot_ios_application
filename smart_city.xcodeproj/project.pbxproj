@@ -40,8 +40,9 @@
 		18FFEFFA2340EC6D007BFE4C /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FFEFF92340EC6D007BFE4C /* NotificationViewController.swift */; };
 		18FFEFFD2340EC6D007BFE4C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18FFEFFB2340EC6D007BFE4C /* MainInterface.storyboard */; };
 		18FFF0012340EC6D007BFE4C /* NotificationContentApp.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 18FFEFF32340EC6D007BFE4C /* NotificationContentApp.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		18FFF007234118C8007BFE4C /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FFF006234118C8007BFE4C /* UserProfile.swift */; };
+		18FFF007234118C8007BFE4C /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FFF006234118C8007BFE4C /* UserProfileVC.swift */; };
 		18FFF00923411DD7007BFE4C /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FFF00823411DD7007BFE4C /* UserService.swift */; };
+		18FFF00B2341B543007BFE4C /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FFF00A2341B543007BFE4C /* UserProfileCell.swift */; };
 		3BF7CDC80B8A3E8C8668885F /* libPods-smart_city.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA5E540F1EDFB59AACDB29D /* libPods-smart_city.a */; };
 /* End PBXBuildFile section */
 
@@ -124,8 +125,9 @@
 		18FFEFF92340EC6D007BFE4C /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		18FFEFFC2340EC6D007BFE4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		18FFEFFE2340EC6D007BFE4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18FFF006234118C8007BFE4C /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		18FFF006234118C8007BFE4C /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		18FFF00823411DD7007BFE4C /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		18FFF00A2341B543007BFE4C /* UserProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserProfileCell.swift; path = smart_city/Services/UserProfileCell.swift; sourceTree = SOURCE_ROOT; };
 		4EEC20081119C9BFD7581FB4 /* Pods-smart_city.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smart_city.debug.xcconfig"; path = "Target Support Files/Pods-smart_city/Pods-smart_city.debug.xcconfig"; sourceTree = "<group>"; };
 		5BA5E540F1EDFB59AACDB29D /* libPods-smart_city.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-smart_city.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B19A10DF4B3D460D8B8FA5 /* Pods-smart_city.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smart_city.release.xcconfig"; path = "Target Support Files/Pods-smart_city/Pods-smart_city.release.xcconfig"; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 			children = (
 				1884356423311F25004F1AAD /* ForeCastCell.swift */,
 				1884356523311F25004F1AAD /* ForeCastCell.xib */,
+				18FFF00A2341B543007BFE4C /* UserProfileCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -256,7 +259,7 @@
 				18129B292332242E00384692 /* ForeCastVC.xib */,
 				1861A3A8233D96E600F948D8 /* ConfigurationVC.swift */,
 				1861A3A9233D96E600F948D8 /* ConfigurationVC.xib */,
-				18FFF006234118C8007BFE4C /* UserProfile.swift */,
+				18FFF006234118C8007BFE4C /* UserProfileVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -549,8 +552,9 @@
 				18311D2E232B60DF00D7A813 /* CreateAcountVC.swift in Sources */,
 				1884356323307076004F1AAD /* DashboardVC.swift in Sources */,
 				1861A3AA233D96E600F948D8 /* ConfigurationVC.swift in Sources */,
-				18FFF007234118C8007BFE4C /* UserProfile.swift in Sources */,
+				18FFF007234118C8007BFE4C /* UserProfileVC.swift in Sources */,
 				18CF3E4A232F1B0C00AC4106 /* LineChart.swift in Sources */,
+				18FFF00B2341B543007BFE4C /* UserProfileCell.swift in Sources */,
 				18FFF00923411DD7007BFE4C /* UserService.swift in Sources */,
 				184AFB2B23366AA30065D0F6 /* Extensions.swift in Sources */,
 				181447E92338658E00D4FBBF /* Thresholds.swift in Sources */,

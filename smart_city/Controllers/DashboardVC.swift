@@ -54,9 +54,13 @@ class DashboardVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let  cardHandelAreaHeight1 = (self.view.frame.height / self.view.frame.width)*100
+        let  cardHandelAreaHeight1 = (self.view.frame.height / 2)
         
-        print("card height\(cardHandelAreaHeight1)")
+        
+        print("height \(self.view.frame.height)")
+        
+        print("h width \(self.view.frame.width)")
+        
         
         cardHandelAreaHeight  = cardHandelAreaHeight1
         setupCard(cardHandelAreaHeight1: cardHandelAreaHeight)
@@ -88,11 +92,11 @@ class DashboardVC: UIViewController {
             
             let threshold = Thresholds.instance.aqiThreshold(value: data)
             
-            if data != nil{
+//            if data != nil{
                 
                 self.updateUi(aqi: data, threshold: threshold)
                 
-            }
+//            }
             
 
      
@@ -183,7 +187,8 @@ class DashboardVC: UIViewController {
             let frameAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
                 switch state {
                 case .expanded:
-                    self.forcastVC.view.frame.origin.y = self.view.frame.height - self.carHeight
+                    self.forcastVC.view.frame.origin.y = self.view.frame.height -
+                        self.view.bounds.height+self.view.bounds.width
                 case .collapsed:
                     self.forcastVC.view.frame.origin.y =  (self.view.frame.height - self.cardHandelAreaHeight)+20
                         

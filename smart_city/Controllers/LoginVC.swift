@@ -32,7 +32,7 @@ class LoginVC: UIViewController {
         AuthService.instance.loginUser(email: email, password: pass) { (sucess) in
             
             if sucess{
-                AuthService.instance.findUserByEmail(completion: { (sucess) in
+                AuthService.instance.getAllData(completion: { (sucess) in
 
                     if sucess{
 
@@ -44,7 +44,10 @@ class LoginVC: UIViewController {
                         self.present(authVC, animated: true)
 
                         let saveSuccessful: Bool = KeychainWrapper.standard.set(AuthService.instance.authToken, forKey: "token")
+                        let retrievedToken: String? = KeychainWrapper.standard.string(forKey: "token")
 
+                        
+                        print("logged in  \(retrievedToken)")
                         print("token \(saveSuccessful)")
 
 

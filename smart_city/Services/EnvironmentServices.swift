@@ -289,36 +289,116 @@ class EnvironmentService {
             
     }
     
-    func  aqiCaculationLineChart() ->[Double] {
+  
+    func getCo()->[Double]{
         
-        print("Aqi babababb\(self.co )")
+        let convertCo = coAqi.compactMap(Double.init)
         
-        var aqiArr = [Double]()
+        let coArr = convertCo.map { (value) -> Double? in
+            return Double(value)
+        }
         
+        let reversvalue = coArr.reversed()
+        
+        let arraySlice = reversvalue.prefix(12)
+        let newArray = Array(arraySlice)
+        
+        print("array reverse \(newArray)")
+
+        
+        
+        return newArray as! [Double]
+
+    }
+    
+    func getUV()->[Double]{
+    
+        let convertUV = uvAqi.compactMap(Double.init)
+        
+        let uvArr = convertUV.map { (value) -> Double? in
+            return Double(value)
+        }
+        
+        let reversvalue = uvArr.reversed()
+        
+        let arraySlice = reversvalue.prefix(12)
+        let newArray = Array(arraySlice)
+        
+        print("array reverse \(newArray)")
+
+        
+        
+        return newArray as! [Double]
+    
+    }
+    
+    func getSmoke()->[Double]{
+    
+        let convertSmoke = smokeAqi.compactMap(Double.init)
+        
+        let smokeArr = convertSmoke.map { (value) -> Double? in
+            return Double(value)
+        }
+        
+        let reversvalue = smokeArr.reversed()
+        
+        let arraySlice = reversvalue.prefix(12)
+        let newArray = Array(arraySlice)
+        
+        print("array reverse \(newArray)")
+
+        
+        
+        return newArray as! [Double]
+    
+    }
+    
+    func getDustAqi()->[Double]{
+    
         let convertDust = dustAqi.compactMap(Double.init)
         
         let dustArr = convertDust.map { (value) -> Double? in
             return Double(value)
         }
         
-        
-        for aqi in dustArr{
-            
-            let apic:Double = ((aqi!/1024) - 0.0356) * 120000 * 0.035
-//            print("aqi caculation: \(aqic)")
-            aqiArr.append(apic)
-        }
-        
-        
-        let reversvalue = aqiArr.reversed()
+        let reversvalue = dustArr.reversed()
         
         let arraySlice = reversvalue.prefix(12)
         let newArray = Array(arraySlice)
+        
         print("array reverse \(newArray)")
 
         
         
-        return newArray
+        return newArray as! [Double]
+    
+    }
+    
+   
+    
+    func  aqiCaculationLineChart() ->[Double] {
+            
+        var Aqiarr = [Double]()
+        
+        for dust in getDustAqi(){
+            
+            for co in getCo(){
+                
+                for smoke in getSmoke(){
+                    
+                    for uv in getUV(){
+                
+                        let api = (dust/1.66)*0.9+((co+smoke)/2) * 4.84*0.005 + uv*1.2*0.05
+                        Aqiarr.append(api)
+                    }
+                }
+            }
+            
+        }
+        
+        
+        return Aqiarr
+ 
     }
     
     func aqiCaculation()->Int{

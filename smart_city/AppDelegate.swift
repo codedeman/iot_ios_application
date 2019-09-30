@@ -24,11 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if (retrievedToken != nil)  {
             
-             let storyboard  =  UIStoryboard(name: "Main", bundle: Bundle.main)
-            let dasboardVC = storyboard.instantiateViewController(withIdentifier: "Home")
-            
-                
-            self.window?.rootViewController?.navigationController?.pushViewController(dasboardVC, animated: true)
+            let storyboard  =  UIStoryboard(name: "Main", bundle: Bundle.main)
+            let authVC = storyboard.instantiateViewController(withIdentifier: "Home")
+            window?.makeKeyAndVisible()
+            window?.rootViewController?.present(authVC, animated: true, completion: nil)
 
         }
 

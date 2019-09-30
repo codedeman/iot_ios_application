@@ -22,5 +22,6 @@ class UserService {
         self.email = email
         self.place_name = place_name
     }
-
+    
+    
 }

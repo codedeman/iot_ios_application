@@ -132,7 +132,7 @@
                                             <constraint firstAttribute="width" constant="100" id="qo1-Ug-wUG"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="18"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QBf-Zr-dAe">
@@ -144,7 +144,7 @@
                                         <state key="normal" image="pencil.and.outline" catalog="system"/>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="dV1-qS-OoM" firstAttribute="centerX" secondItem="wq7-QL-Uqo" secondAttribute="centerX" id="GwU-DX-LnO"/>
                                     <constraint firstAttribute="height" constant="70" id="Tdc-Mb-szL"/>
@@ -187,7 +187,7 @@
                                 <rect key="frame" x="0.0" y="345" width="414" height="468"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.27058823529999998" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="86" id="n0R-eP-IE2" customClass="UserProfileCell" customModule="GoalPost" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="86" id="n0R-eP-IE2" customClass="UserProfileCell" customModule="smart_city" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="n0R-eP-IE2" id="LzC-rs-Fng">
@@ -195,29 +195,41 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="qax-0f-Eq5">
-                                                    <rect key="frame" x="35" y="26" width="139" height="34"/>
+                                                    <rect key="frame" x="35" y="26" width="133.5" height="34"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="me-tabIcon" translatesAutoresizingMaskIntoConstraints="NO" id="GYa-ww-Ve7">
-                                                            <rect key="frame" x="0.0" y="0.0" width="32" height="34"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moon.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GYa-ww-Ve7">
+                                                            <rect key="frame" x="0.0" y="1" width="19.5" height="33"/>
+                                                            <color key="tintColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This week" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUK-ZV-EbW">
-                                                            <rect key="frame" x="62" y="0.0" width="77" height="34"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dark mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUK-ZV-EbW">
+                                                            <rect key="frame" x="49.5" y="0.0" width="84" height="34"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1rz-zG-07r">
+                                                    <rect key="frame" x="325" y="31" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="switchMode:" destination="n0R-eP-IE2" eventType="valueChanged" id="j0k-TE-Vjy"/>
+                                                    </connections>
+                                                </switch>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="qax-0f-Eq5" firstAttribute="leading" secondItem="LzC-rs-Fng" secondAttribute="leadingMargin" constant="15" id="6Yq-vC-kSh"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="qax-0f-Eq5" secondAttribute="bottom" constant="15" id="CHe-KU-SmK"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="1rz-zG-07r" secondAttribute="trailing" constant="20" id="MCG-V7-2jV"/>
                                                 <constraint firstItem="qax-0f-Eq5" firstAttribute="top" secondItem="LzC-rs-Fng" secondAttribute="topMargin" constant="15" id="Roy-jV-qSQ"/>
+                                                <constraint firstItem="1rz-zG-07r" firstAttribute="top" secondItem="LzC-rs-Fng" secondAttribute="topMargin" constant="20" id="wgv-fU-pmo"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="goalLbl" destination="bUK-ZV-EbW" id="Noa-Ew-q9P"/>
                                             <outlet property="imageName" destination="GYa-ww-Ve7" id="Ani-bN-Uud"/>
+                                            <outlet property="stateLbl" destination="qax-0f-Eq5" id="xLj-Fu-VHL"/>
+                                            <outlet property="switchState" destination="1rz-zG-07r" id="2CJ-bg-ONp"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -240,6 +252,10 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Me" image="person.fill" catalog="system" selectedImage="person.fill" id="9Ks-fQ-Rwd"/>
                     <navigationItem key="navigationItem" id="KRJ-jq-cOm"/>
+                    <connections>
+                        <outlet property="emailLbl" destination="03h-6E-Uku" id="3Zn-wv-kx9"/>
+                        <outlet property="userContentTableView" destination="RFf-ty-tcq" id="sky-bS-adT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t67-rJ-sop" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -249,7 +265,7 @@
     <resources>
         <image name="house" catalog="system" width="64" height="54"/>
         <image name="house.fill" catalog="system" width="64" height="52"/>
-        <image name="me-tabIcon" width="16" height="16"/>
+        <image name="moon.fill" catalog="system" width="64" height="62"/>
         <image name="pencil.and.outline" catalog="system" width="64" height="60"/>
         <image name="person.circle" catalog="system" width="64" height="62"/>
         <image name="person.fill" catalog="system" width="64" height="60"/>
