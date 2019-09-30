@@ -21,6 +21,10 @@ class EnvironmentService {
     var environmentArr = [String]()
     
     var dustAqi = [String]()
+    var smokeAqi = [String]()
+    var coAqi = [String]()
+    var uvAqi = [String]()
+    
 
     
     public private(set) var temperature: String!
@@ -31,6 +35,11 @@ class EnvironmentService {
     public private(set) var dust: String!
     public private(set) var humidity: String!
     public private(set) var co2: String!
+    public private(set) var co: String!
+    public private(set) var smoke: String!
+    public private(set) var soil: String!
+
+
     
     func setParameter(result:[String:Any])  {
         
@@ -49,6 +58,9 @@ class EnvironmentService {
 
         humidity = result["humidity"] as? String
         
+        smoke = result["smoke"] as? String
+        co  = result["co"] as? String
+        soil =  result["soil"] as? String
         
     }
     
@@ -145,8 +157,17 @@ class EnvironmentService {
                                     if  let result:Dictionary<String,AnyObject> = evvalue["datas"] as? Dictionary<String, AnyObject>{
                                         
                                             let dust = result["dust"] as? String
-                                        
-                                        self.dustAqi.append(dust!)
+                                            let  co = result["co"] as? String
+                                            
+                                            let smoke = result["smoke"] as? String
+                                            
+                                            let uv = result["uv"] as? String
+                                            
+                                            self.smokeAqi.append(smoke!)
+                                            self.coAqi.append(co!)
+                                            self.uvAqi.append(uv!)
+                                            
+                                            self.dustAqi.append(dust!)
                                     }
             
                         
@@ -256,14 +277,10 @@ class EnvironmentService {
     
     func getEnvironment() -> [String] {
         
-        let  environment:[String] = [self.temperature,self.uv,self.fire,self.gas,self.rain,self.dust]
+        let environment:[String] = [self.temperature,self.uv,self.fire,self.gas,self.rain,self.dust,self.humidity,self.smoke,self.co,self.soil]
 
         
-//        let doubleArray = environment.compactMap(Double.init)
-//
-//        let arrOfDoubles = doubleArray.map { (value) -> Double? in
-//            return Double(value)
-//        }
+
         
         return environment
         
@@ -274,22 +291,24 @@ class EnvironmentService {
     
     func  aqiCaculationLineChart() ->[Double] {
         
+        print("Aqi babababb\(self.co )")
+        
         var aqiArr = [Double]()
         
-        let doubleArray = dustAqi.compactMap(Double.init)
+        let convertDust = dustAqi.compactMap(Double.init)
         
-        let arrOfDoubles = doubleArray.map { (value) -> Double? in
+        let dustArr = convertDust.map { (value) -> Double? in
             return Double(value)
         }
         
-        for aqi in arrOfDoubles{
+        
+        for aqi in dustArr{
             
             let apic:Double = ((aqi!/1024) - 0.0356) * 120000 * 0.035
 //            print("aqi caculation: \(aqic)")
             aqiArr.append(apic)
         }
         
-        print("aqi \(aqiArr)")
         
         let reversvalue = aqiArr.reversed()
         
@@ -304,13 +323,21 @@ class EnvironmentService {
     
     func aqiCaculation()->Int{
               
-        let converValue = Double(getDust()) ?? 0
-              let api = ((converValue/1024) - 0.0356) * 120000 * 0.035
-               
-           let roundvalue = Int(api)
-           
-              
-           return roundvalue
+        if dust != nil{
+            
+            let dustValue  = Double(dust) ?? 0
+            let coValue = Double(co) ?? 0
+            let smokeValue = Double(smoke) ?? 0
+            let uvValue = Double(uv) ?? 0
+            let api = (dustValue/1.66)*0.9+((coValue+smokeValue)/2) * 4.84*0.005 + uvValue*1.2*0.05
+                
+            let roundvalue = Int(api)
+            
+            return roundvalue
+        }
+        
+        return 0
+        
               
     }
 

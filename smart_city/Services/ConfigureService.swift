@@ -61,33 +61,29 @@ class ConfigureService {
                     
                     let state = json["devices"].dictionary
                     
-//                    guard let test  = state as? Dictionary<String,Any> else {return}
-//                    
-//                    print("test \(test["lights"])")
-//                    
-                    print("state \(String(describing: state))")
                     
-                    for (index,value) in state!{
-                        
-                        print("Fuck \(value)")
-                        
-
-//                        guard let result = value as? Dictionary<String,Any> else {return }
-//
-//                        guard let  awning = result["awning_1"] as? String else {return}
-//
-//                        guard let  fan  = result["fan_1"] as?  String else {return}
-//                        guard let  light =  result["light_1"] as? String else {return}
-//                        guard let  pump = result["pump_1"] as? String else {return}
-//
-//                        print("what the fuck \(fan)")
-//
-//                        let parameter  = Configure(awning: awning, fan: self.fan, light: light, pump: pump)
-//
-//                        self.configure.append(parameter)
-//
+                    guard let result = state as? Dictionary<String,Any> else {return}
                     
+                    
+                    for index in result{
+                    
+                    
+                        guard let item = index as? Dictionary<String,Any> else {return}
+                        print("items \(item["awnings"])")
                     }
+                    
+//                    print("Fuck\(result["awnings"])")
+                    
+//                    print("Fuck \(state!["awnings"])")
+//
+//
+//                    for index in state!{
+//
+//                        print("Fuck \(index)")
+//
+//
+//
+//                    }
                     
                     
 

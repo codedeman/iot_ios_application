@@ -18,8 +18,7 @@ let URL_GET_CURRENT = "\(BASE_URL)/data/get/current"
 
 let CONFIGURE_DEVICE_URL = "\(BASE_URL)/device/switch"
 let URL_GET_SATE = "\(BASE_URL)/device/get"
-
-
+let URL_GET_INFOR = "\(BASE_URL)/data/get/info"
 
 
 // Notification Constants

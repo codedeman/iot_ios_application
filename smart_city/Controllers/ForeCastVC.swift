@@ -12,7 +12,10 @@ class ForeCastVC: UIViewController {
 //    handleArea
     
     let xLabels: [String] = ["40", "30", "54", "69", "40", "70"]
-    let nameLabels: [String] = ["Temperature", "UV", "Fire", "Gas", "Rain", "Dust","Humidity","Co2"]
+    let nameLabels: [String] = ["Temperature", "UV", "Fire", "Gas", "Rain", "Dust","Humidity","Co","Soil","Smoke"]
+    
+//    let environment:[String] = [self.temperature,self.uv,self.fire,self.gas,self.rain,self.dust,self.humidity,self.smoke,self.soil]
+
     let environment:[Environment] = []
 
     @IBOutlet weak var handleArea: UIView!
@@ -21,9 +24,12 @@ class ForeCastVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    
+        print("what the hell \(nameLabels.count)")
+      
         print("data \(EnvironmentService.instance.environmentParameters())")
         forecastTableView.register(UINib(nibName: "ForeCastCell", bundle: nil), forCellReuseIdentifier: "ForeCastCell")
+        
+        
 
         forecastTableView.delegate =  self
         forecastTableView.dataSource = self
@@ -34,7 +40,9 @@ class ForeCastVC: UIViewController {
         
         EnvironmentService.instance.findCurrentParameter { (sucess) in
             
-            let data = EnvironmentService.instance.environmentParameters()
+            _ = EnvironmentService.instance.environmentParameters()
+            let data = EnvironmentService.instance.getEnvironment()
+            print("what the hell \(data.count)")
         
         }
         
@@ -60,7 +68,7 @@ class ForeCastVC: UIViewController {
 extension ForeCastVC:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return xLabels.count
+        return nameLabels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -90,8 +98,6 @@ extension ForeCastVC:UITableViewDataSource,UITableViewDelegate{
                 let temp1 = "".htmlDecoded(input: temp)+"C"
                 cell.value!.text = temp1
                 
-                
-
             }
 
             if self.nameLabels[indexPath.row] == "UV"{
@@ -107,7 +113,7 @@ extension ForeCastVC:UITableViewDataSource,UITableViewDelegate{
             }
             if self.nameLabels[indexPath.row] == "Rain"{
                 if EnvironmentService.instance.rain == "1"{
-                
+                    cell.value.isHidden = true
                     cell.environmentStatus.text = "Raining"
                     cell.background.backgroundColor = self.hexStringToUIColor(hex: "#653ac9")
 
@@ -124,10 +130,12 @@ extension ForeCastVC:UITableViewDataSource,UITableViewDelegate{
                 
                 if EnvironmentService.instance.fire == "1" {
                     cell.environmentStatus.text = "Yes"
+                    cell.value.isHidden = true
                 }
                 else{
-                
+                    
                     cell.environmentStatus.text = "Normal"
+                    cell.value.isHidden = true
                 }
                 cell.background.backgroundColor = self.hexStringToUIColor(hex: "#ee3661")
                 
@@ -145,6 +153,34 @@ extension ForeCastVC:UITableViewDataSource,UITableViewDelegate{
                 cell.value.text =  dustconvert
 
             }
+            
+            if self.nameLabels[indexPath.row] == "Humidity"{
+                          
+                    let humidity = "\(EnvironmentService.instance.humidity!)"+"&#37"
+                          
+                    let dustconvert = "".htmlDecoded(input: humidity)
+                    cell.value.text =  dustconvert
+
+            }
+            
+            if self.nameLabels[indexPath.row] == "Soil"{
+                                     
+                let soil = "\(EnvironmentService.instance.soil!)"+"&#37"
+                                     
+                    let soilconvert = "".htmlDecoded(input: soil)
+                    cell.value.text =  soilconvert
+
+            }
+            
+            if self.nameLabels[indexPath.row] == "Co"{
+                let co = "\(EnvironmentService.instance.co!)"+"ppm"
+                cell.value.text =  co
+
+                
+            }
+                      
+            
+            
             
         }
         

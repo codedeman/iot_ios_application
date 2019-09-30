@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import UserNotifications
 
 
 class DashboardVC: UIViewController {
@@ -53,69 +54,75 @@ class DashboardVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let  cardHandelAreaHeight1 = (self.view.bounds.height / self.view.bounds.width) * 200
+        let  cardHandelAreaHeight1 = (self.view.frame.height / self.view.frame.width)*100
         
         print("card height\(cardHandelAreaHeight1)")
         
-        cardHandelAreaHeight  = cardHandelAreaHeight1-90
+        cardHandelAreaHeight  = cardHandelAreaHeight1
         setupCard(cardHandelAreaHeight1: cardHandelAreaHeight)
 
         self.forcastVC.view.layer.cornerRadius = 20
-        
-      
-        
-//        SocketService.instance.conectSocket { (sucess) in
-//
-//            print("haha \(sucess)")
-//        }
-//
-//        SocketService.instance.conectSocket { (sucess) in
-//
-//            print("test \(sucess)")
-//        }
-        
-//        EnvironmentService.instance.getPlaceIds { (place_id) in
-//
-//
-//                for id in place_id{
-//
-//                    print("hello \(id)")
-//
-//                    SocketService.instance.getEnvironmentParameter(place_id: id) { (environment) in
-//
-//                            print("environent \(environment)")
-//                    }
-//
-//                }
-//        }
-//
-//        SocketService.instance.getNotify()
-//
-        
-     
+    
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.sound]) { (granted, error) in
+                   
+                   if granted{
+                       print("Notification access granted ")
+                   }
+                   else{
+                       
+                       print(error?.localizedDescription ?? "e ")
+                   }
+               }
+        
         EnvironmentService.instance.findCurrentParameter { (sucess) in
+            
+            
+            let data = EnvironmentService.instance.aqiCaculation()
+            
+            let threshold = Thresholds.instance.aqiThreshold(value: data)
+            
+            if data != nil{
+                
+                self.updateUi(aqi: data, threshold: threshold)
+                
+            }
+            
 
-            self.apiValue.text = "\(EnvironmentService.instance.aqiCaculation())"+"AQI"
-            self.concurentStatus.text = "\(Thresholds.instance.aqiThreshold(value: EnvironmentService.instance.aqiCaculation()))"
      
         }
         EnvironmentService.instance.findAllParameter { (sucess) in
-            
+
             self.setLineChart(name: self.nameLabels, values: EnvironmentService.instance.aqiCaculationLineChart())
 
         }
-        
+
         
            
         
         
 
+    }
+    
+    func updateUi(aqi:Int,threshold:String){
+    
+        
+        DispatchQueue.main.async {
+        
+    
+            self.apiValue.text = "\((aqi))"+"AQI"
+            
+            self.concurentStatus.text = "\(threshold)"
+               
+        }
+    
+    
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

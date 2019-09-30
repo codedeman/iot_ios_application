@@ -40,7 +40,7 @@ class LoginVC: UIViewController {
                         self.spinner.isHidden = true
                         self.spinner.stopAnimating()
                         let storyboard  =  UIStoryboard(name: "Main", bundle: Bundle.main)
-                               let authVC = storyboard.instantiateViewController(withIdentifier: "DashboardVC")
+                               let authVC = storyboard.instantiateViewController(withIdentifier: "Home")
                         self.present(authVC, animated: true)
 
                         let saveSuccessful: Bool = KeychainWrapper.standard.set(AuthService.instance.authToken, forKey: "token")

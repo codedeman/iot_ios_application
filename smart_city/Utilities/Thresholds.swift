@@ -8,6 +8,8 @@
 
 import Foundation
 
+import UserNotifications
+
 class Thresholds {
     
     static let instance = Thresholds()
@@ -40,11 +42,35 @@ class Thresholds {
         
         if (value >= 0 && value < 75) {message =  Thresholds.good}
         
-        if (value >= 150 && value < 300) {message = Thresholds.normal}
+        if (value >= 150 && value < 300) {
+            
+            message = Thresholds.normal
+            
+            
+            
+//            thresholdNotification(value: value, inSeconds: 3) { (sucess) in
+//                           if sucess{
+//
+//                               print("Sucessfully ")
+//                           }
+//                           print("Error")
+//                       }
+            
+        }
 
         if (value >= 300 && value < 1050){ message = Thresholds.medium}
         
-        if (value >= 1050 && value < 3000){ message = Thresholds.bad}
+        if (value >= 1050 && value < 3000){
+            
+            message = Thresholds.bad
+            thresholdNotification(value: value, inSeconds: 3) { (sucess) in
+                if sucess{
+                
+                    print("Sucessfully ")
+                }
+                print("Error")
+            }
+        }
 
 
         return message
@@ -79,5 +105,39 @@ class Thresholds {
         return message
         
     }
+    
+    func thresholdNotification(value:Int,inSeconds:TimeInterval,completion:@escaping (_ Success:Bool)->()) {
+   
+//            var attachment:UNNotificationAttachment
+            
+    //          attachment = try!UNNotificationAttachment(identifier: "myNotification", url:imageUrl , options: .none)
+            //ONLY FOR EXTENSION
+        
+             let notif = UNMutableNotificationContent()
+            notif.categoryIdentifier = "myNotificationCategory"
+            notif.title = "New Notification"
+            notif.subtitle = "\(value)"
+
+     
+            
+            let  notifTrigger =  UNTimeIntervalNotificationTrigger(timeInterval: inSeconds, repeats: false)
+
+            
+            let request =  UNNotificationRequest(identifier: "myNotification", content: notif, trigger: notifTrigger)
+            
+            
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
+                
+                if error != nil{
+                    
+                    print(error!)
+                    completion(false)
+                    
+                }
+                else {
+                    completion(true)
+                }
+            })
+        }
 
 }

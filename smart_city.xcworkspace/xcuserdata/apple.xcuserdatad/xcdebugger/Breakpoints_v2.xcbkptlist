@@ -14,8 +14,8 @@
             filePath = "smart_city/Services/EnvironmentServices.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
             landmarkName = "getPlaceIds(handler:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -103,32 +103,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5C6DF16E-4B8E-4F38-BD79-A3F1F0759A0D"
+            uuid = "2E8F80A0-DE4F-4CBF-90FC-33E76CA08D10"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "smart_city/Services/ConfigureService.swift"
+            filePath = "smart_city/Services/EnvironmentServices.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "getSate(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "4A642504-3438-46C7-91E5-48EADB4A2108"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "smart_city/Services/ConfigureService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "getSate(completion:)"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "findAllParameter(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

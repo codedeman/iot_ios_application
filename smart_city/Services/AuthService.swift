@@ -93,54 +93,38 @@ class  AuthService {
             "token":authToken
         ]
     
-        Alamofire.request(URL_GET_ALL, method: .post, parameters: body,encoding: JSONEncoding.default,headers: HEADER).responseJSON { (response) in
+        Alamofire.request(URL_GET_INFOR, method: .post, parameters: body,encoding: JSONEncoding.default,headers: HEADER).responseJSON { (response) in
             
             var arr1 = [String]()
          
             if response.result.error == nil {
                 guard let data = response.data else { return }
                 
-                let json =  try!  JSON(data: data)
-                
-               if  let item  =  json["places"].arrayObject{
-                
-                    for itemset in item{
-                        
-                        let dataset:Dictionary<String,AnyObject> =  itemset as! Dictionary<String, AnyObject>
-                        
-                        if let environtment =  dataset["times"]{
-                            
-                            
-                            let environmentvalue = environtment as! Array<AnyObject>
-                            
-                            
-                            for castvalue in environmentvalue{
-                            
-                            
-                                let evvalue:Dictionary<String,AnyObject> = castvalue as! Dictionary<String,AnyObject>
-                                
-                                let arr:Dictionary<String,AnyObject> = evvalue["datas"] as! Dictionary<String, AnyObject>
-        
-                                
-                                arr1.append(arr["temp"] as! String)
-                                print("data1 \(arr1.count)")
-
-                                
-                            }
-                        
-                        }
-
-                    }
-                    print("data \(arr1.count)")
+                self.setUserInfo(data: data)
+            
                 }
-                completion(true)
 
                 
-            } else {
+            else {
                 completion(false)
                 debugPrint(response.result.error as Any)
             }
         }
+    }
+    
+    func setUserInfo(data: Data) {
+        
+        do {
+            
+            let json = try! JSON(data: data)
+            let email = json["email"].stringValue
+            let place_name = json["place_name"].stringValue
+            UserService.instance.setParameter(email: email, place_name:place_name)
+        } catch  {
+            
+            debugPrint(error)
+        }
+        
     }
     
     

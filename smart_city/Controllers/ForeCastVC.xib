@@ -140,9 +140,9 @@
                     <color key="sectionIndexBackgroundColor" red="0.2470588235" green="0.28235294119999998" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQ6-Bl-9h5">
-                    <rect key="frame" x="284.5" y="275" width="25.5" height="22"/>
+                    <rect key="frame" x="285" y="272" width="25" height="25"/>
                     <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                    <state key="normal" image="forward" catalog="system"/>
+                    <state key="normal" image="back"/>
                     <connections>
                         <action selector="configureBtnWasPressed:" destination="-1" eventType="touchUpInside" id="9kj-dh-4d0"/>
                     </connections>
@@ -183,6 +183,6 @@
         </view>
     </objects>
     <resources>
-        <image name="forward" catalog="system" width="64" height="38"/>
+        <image name="back" width="25" height="25"/>
     </resources>
 </document>
