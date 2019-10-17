@@ -18,6 +18,7 @@ let config : [String: Any] = ["log": true,
 "compress": true,
 "forcePolling": true,
 "forceNew": true]
+
 class SocketService: NSObject {
     
 
@@ -66,26 +67,12 @@ class SocketService: NSObject {
         
     }
     
-    func conectSocket(completion:@escaping CompletionHandler)  {
-        
-
-    }
+  
     
    
     
-    func getNotify(){
-        
-        socket.on("notify", callback: { (data,message )  in
-
-
-            print("notify right here \(data)")
-
-            
-        })
-        
-        
-        
-    }
+    
+    
     
     
     func establishConnection() {

@@ -1,11 +1,11 @@
 PODS:
   - Alamofire (4.9.0)
-  - Charts (3.3.0):
-    - Charts/Core (= 3.3.0)
-  - Charts/Core (3.3.0)
+  - Charts (3.4.0):
+    - Charts/Core (= 3.4.0)
+  - Charts/Core (3.4.0)
   - Socket.IO-Client-Swift (15.1.0):
     - Starscream (~> 3.1)
-  - Starscream (3.1.0)
+  - Starscream (3.1.1)
   - SwiftKeychainWrapper (3.4.0)
   - SwiftyJSON (5.0.0)
 
@@ -27,9 +27,9 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
-  Charts: e0dd4cd8f257bccf98407b58183ddca8e8d5b578
+  Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
   Socket.IO-Client-Swift: 7cb44c0ffb86e158cee32d0642d30ec5fdcf8f61
-  Starscream: 08172b481e145289c4930cb567230fb55897cfa4
+  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   SwiftKeychainWrapper: 6fc49fbf7d4a6b0772917acb0e53a1639f6078d6
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 

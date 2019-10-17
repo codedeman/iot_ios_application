@@ -188,7 +188,7 @@ class DashboardVC: UIViewController {
                 switch state {
                 case .expanded:
                     self.forcastVC.view.frame.origin.y = self.view.frame.height -
-                        self.view.bounds.height+self.view.bounds.width
+                        self.carHeight
                 case .collapsed:
                     self.forcastVC.view.frame.origin.y =  (self.view.frame.height - self.cardHandelAreaHeight)+20
                         
